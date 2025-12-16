@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Ficha del Juguete – MejoresJuguetes.com</title>
+  <title>Nombre del Juguete – MejoresJuguetes.com</title>
   <meta name="description" content="Detalles completos del juguete: edad recomendada, tipo, marca, valoración, precio y características.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/estilos.css">
@@ -24,11 +24,11 @@
     </div>
 
     <nav class="menu">
-      <a href="index.html" class="active">Inicio</a>
+      <a href="index.html">Inicio</a>
       <a href="blog.html">Blog</a>
-      <a href="juguetes.html">Juguetes</a>
+      <a href="juguetes.html" class="active">Juguetes</a>
       <a href="rankings.html">Rankings</a>
-       <a href="resenas.html">Resenas</a>
+      <a href="resenas.html">Reseñas</a>
       <a href="contacto.html">Contacto</a>
     </nav>
 
@@ -49,7 +49,7 @@
   <div class="breadcrumbs">
     <a href="index.html">Inicio</a> › 
     <a href="juguetes.html">Juguetes</a> › 
-    <span id="nombre-juguete">Nombre del juguete</span>
+    <span>Nombre del juguete</span>
   </div>
 
   <!-- FICHA -->
@@ -58,22 +58,22 @@
     <div class="ficha-grid">
 
       <div class="ficha-imagen">
-        <img id="imagen-juguete" src="" alt="Juguete">
+        <img src="img/juguete-ejemplo.jpg" alt="Nombre del juguete">
       </div>
 
       <div class="ficha-info">
-        <h1 id="titulo-juguete">Nombre del juguete</h1>
+        <h1>Nombre del juguete</h1>
 
-        <p><strong>Edad recomendada:</strong> <span id="edad-juguete"></span></p>
-        <p><strong>Tipo:</strong> <span id="tipo-juguete"></span></p>
-        <p><strong>Marca:</strong> <span id="marca-juguete"></span></p>
-        <p><strong>Valoración:</strong> ⭐ <span id="valoracion-juguete"></span></p>
+        <p><strong>Edad recomendada:</strong> 3 – 6 años</p>
+        <p><strong>Tipo:</strong> Montessori / Educativo / STEM</p>
+        <p><strong>Marca:</strong> Marca del juguete</p>
+        <p><strong>Valoración:</strong> ⭐ 4.7</p>
 
         <div class="precio-box">
-          <p><strong>Precio aproximado:</strong> <span id="precio-juguete">—</span></p>
+          <p><strong>Precio aproximado:</strong> 24,99 €</p>
         </div>
 
-        <a id="amazon-link" href="#" target="_blank" class="btn-amazon">
+        <a href="https://www.amazon.es/dp/XXXXXXXX?tag=librarium01-21" target="_blank" class="btn-amazon">
           Ver en Amazon
         </a>
       </div>
@@ -85,19 +85,45 @@
   <!-- DESCRIPCIÓN -->
   <section class="section">
     <h2>Descripción</h2>
-    <p id="descripcion-juguete"></p>
+    <p>
+      Aquí va la descripción completa del juguete. Explica qué incluye, qué beneficios tiene,
+      por qué es educativo, qué habilidades desarrolla y por qué es una buena compra para los padres.
+    </p>
   </section>
 
   <!-- CARACTERÍSTICAS -->
   <section class="section">
     <h2>Características principales</h2>
-    <ul id="caracteristicas-juguete"></ul>
+    <ul>
+      <li>Material de madera natural</li>
+      <li>Incluye 24 piezas de colores</li>
+      <li>Desarrolla motricidad fina</li>
+      <li>Ideal para método Montessori</li>
+      <li>Certificación CE</li>
+    </ul>
   </section>
 
   <!-- RELACIONADOS -->
   <section class="section">
     <h2>Juguetes relacionados</h2>
-    <div id="relacionados" class="grid"></div>
+    <div class="grid">
+
+      <a href="juguete2.html" class="card">
+        <img src="img/juguete2.jpg" alt="Juguete relacionado 1">
+        <h3>Juguete relacionado 1</h3>
+      </a>
+
+      <a href="juguete3.html" class="card">
+        <img src="img/juguete3.jpg" alt="Juguete relacionado 2">
+        <h3>Juguete relacionado 2</h3>
+      </a>
+
+      <a href="juguete4.html" class="card">
+        <img src="img/juguete4.jpg" alt="Juguete relacionado 3">
+        <h3>Juguete relacionado 3</h3>
+      </a>
+
+    </div>
   </section>
 
 </main>
