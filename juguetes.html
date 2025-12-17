@@ -279,22 +279,8 @@
     return (3.5 + (seed % 13) / 10).toFixed(1);
   }
 
-  /*  
-    🔥 IMPORTANTE  
-    Seguimos usando Google Books API porque es lo que usa Librarium.  
-    Tú luego lo cambiarás por juguetes.json igual que hicimos en Librarium con asins.json.  
-    Por ahora lo dejamos EXACTO para que no se rompa nada.  
-  */
-  async function buscarLibros(query, page = 0) {
-    const startIndex = page * MAX_RESULTS;
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&langRestrict=es&maxResults=${MAX_RESULTS}&startIndex=${startIndex}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    return {
-      items: data.items || [],
-      total: data.totalItems || 0
-    };
-  }
+  
+ async function buscarJuguetes(categoria, subcategoria) { if (!juguetesData[categoria] || !juguetesData[categoria][subcategoria]) { return { items: [], total: 0 }; } const items = Object.values(juguetesData[categoria][subcategoria]); return { items, total: items.length }; }
 
   function portada(info) {
     const isbn = info.industryIdentifiers?.[0]?.identifier;
@@ -357,7 +343,7 @@
     const query = subtabs[subcategoriaActual];
     if (!query) return;
 
-    const { items, total } = await buscarLibros(query, paginaActual);
+  const { items, total } = await buscarJuguetes(categoriaActual, subcategoriaActual);
 
     document.getElementById("resultados").innerHTML = items.map(card).join("");
 
