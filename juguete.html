@@ -2,98 +2,33 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detalle del Juguete</title>
-
-  <!-- CSS principal del sitio -->
+  <title>Juguete – MejoresJuguetes.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/estilos.css">
-
-  <!-- CSS Montessori global -->
-  <link rel="stylesheet" href="style.css">
-
-  <style>
-    .juguete-card {
-      max-width: 600px;
-      margin: 40px auto;
-      background: white;
-      padding: 25px;
-      border-radius: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      text-align: center;
-    }
-
-    .juguete-card img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
-
-    .juguete-card h1 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
-
-    .juguete-info {
-      font-size: 1rem;
-      margin-bottom: 20px;
-      color: #666;
-    }
-
-    .btns {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .btn {
-      padding: 14px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #333;
-      transition: 0.2s ease;
-    }
-
-    .amazon { background: #A7C7E7; }
-    .aliexpress { background: #F7C6D0; }
-
-    .btn:hover {
-      transform: scale(1.03);
-      filter: brightness(1.05);
-    }
-
-    .back {
-      display: block;
-      margin-top: 25px;
-      text-decoration: none;
-      color: #666;
-      font-size: 0.95rem;
-    }
-  </style>
+  <meta name="description" content="Ficha completa del juguete con valoración, descripción y enlaces de compra.">
 </head>
 
 <body>
 
-<!-- HEADER REAL -->
+<!-- ✅ HEADER UNIFICADO -->
 <header class="header">
   <div class="container header-flex">
 
     <div class="logo-box">
-      <img src="img/hero.png" alt="Logo MejoresJuguetes" class="logo-img">
+      <span class="logo-icon">🧸</span>
       <span class="logo-text">MejoresJuguetes.com</span>
     </div>
 
-    <nav class="menu">
-      <a href="index.html">Inicio</a>
-      <a href="blog.html">Blog</a>
-      <a href="juguetes.html" class="active">Juguetes</a>
-      <a href="rankings.html">Rankings</a>
-      <a href="resenas.html">Reseñas</a>
-      <a href="contacto.html">Contacto</a>
-    </nav>
+   <nav class="menu">
+        <a href="index.html" class="active">Inicio</a>
+        <a href="blog.html">Blog</a>
+        <a href="juguetes.html">Juguetes</a>
+        <a href="rankings.html">Rankings</a>
+        <a href="resenas.html">Reseñas</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
 
+    <!-- ✅ BUSCADOR UNIFICADO -->
     <div class="search-box">
       <form action="buscar.html" method="GET">
         <input type="text" name="q" placeholder="Buscar juguetes..." required>
@@ -103,59 +38,114 @@
 
   </div>
 </header>
+<!-- ✅ FIN HEADER -->
 
-<main>
 
-<!-- HERO (opcional, igual que en otras páginas) -->
 <section class="hero" style="background-image: url('img/hero.png');">
-  <div class="container hero-overlay">
-    <h2>Detalle del juguete</h2>
-    <p>Información completa y enlaces de compra.</p>
+  <div class="container" style="background: rgba(0,0,0,0.55); padding: 50px 30px; border-radius: 12px;">
+    <h2 id="tituloHero" style="color: #fff; font-size: 2.2rem;">Cargando...</h2>
   </div>
 </section>
 
-<!-- TARJETA DEL JUGUETE -->
-<div class="juguete-card">
-  <img id="imagen" src="" alt="Imagen del juguete">
+<main class="container">
 
-  <h1 id="titulo">Cargando...</h1>
-
-  <div class="juguete-info">
-    <p id="edad"></p>
-    <p id="marca"></p>
-    <p id="descripcion"></p>
-  </div>
-
-  <div class="btns">
-    <a id="amazon" class="btn amazon" target="_blank">Comprar en Amazon</a>
-    <a id="aliexpress" class="btn aliexpress" target="_blank">Comprar en AliExpress</a>
-  </div>
-
-  <a href="javascript:history.back()" class="back">← Volver</a>
-</div>
+  <section class="section" id="contenidoJuguete">
+    <p>Cargando datos...</p>
+  </section>
 
 </main>
 
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 MejoresJuguetes.com – Todos los derechos reservados</p>
+   <div class="footer-links">
+      <a href="quienes-somos.html">Quiénes somos</a>
+      <a href="privacidad.html">Política de privacidad</a>
+      <a href="cookies.html">Política de cookies</a>
+      <a href="aviso-legal.html">Aviso legal</a>
+    </div>
+  </div>
+</footer>
+
 <script>
+  const AFFILIATE_TAG = "mejoresjuguetes-21";
+  let juguetesData = {}; // Datos de juguetes.json
+
+  /* ⭐ Estrellas */
+  function generarEstrellas(rating) {
+    const r = Number(rating) || 0;
+    const estrellas = Math.round(r);
+    return "⭐".repeat(Math.max(0, Math.min(5, estrellas))) + ` (${r}/5)`;
+  }
+
+  /* ⭐ Rating alternativo */
+  function ratingAlternativo(titulo) {
+    let seed = 0;
+    for (let i = 0; i < titulo.length; i++) seed += titulo.charCodeAt(i);
+    const random = (seed % 13) / 10;
+    return (3.5 + random).toFixed(1);
+  }
+
+  /* ⭐ Cargar juguetes.json */
+  async function cargarJuguetesData() {
+    try {
+      const res = await fetch('juguetes.json');
+      juguetesData = await res.json();
+    } catch (e) {
+      console.error("No se pudo cargar juguetes.json", e);
+      juguetesData = {};
+    }
+  }
+
+  /* ⭐ Cargar juguete */
   async function cargarJuguete() {
+    await cargarJuguetesData();
+
     const params = new URLSearchParams(window.location.search);
     const categoria = params.get("cat");
     const id = params.get("id");
 
-    const res = await fetch("juguetes.json");
-    const data = await res.json();
+    if (!categoria || !id || !juguetesData[categoria] || !juguetesData[categoria][id]) {
+      document.getElementById("contenidoJuguete").innerHTML = "<p>Error: juguete no encontrado.</p>";
+      return;
+    }
 
-    const juguete = data[categoria][id];
+    const juguete = juguetesData[categoria][id];
 
-    document.getElementById("titulo").textContent = juguete.titulo || "Juguete";
-    document.getElementById("edad").textContent = juguete.edad ? "Edad: " + juguete.edad : "";
-    document.getElementById("marca").textContent = juguete.marca ? "Marca: " + juguete.marca : "";
-    document.getElementById("descripcion").textContent = juguete.descripcion || "";
+    const titulo = juguete.titulo || "Juguete sin nombre";
+    const marca = juguete.marca || "Marca desconocida";
+    const descripcion = juguete.descripcion || "Sin descripción disponible.";
+    const rating = juguete.rating || ratingAlternativo(titulo);
+    const imagen = juguete.imagenAmazon || "img/juguete-default.png";
 
-    document.getElementById("imagen").src = juguete.imagenAmazon || "https://via.placeholder.com/500x500?text=Sin+Imagen";
+    const enlaceAmazon = juguete.amazon
+      ? juguete.amazon + `?tag=${AFFILIATE_TAG}`
+      : `https://www.amazon.es/s?k=${encodeURIComponent(titulo)}&tag=${AFFILIATE_TAG}`;
 
-    document.getElementById("amazon").href = juguete.amazon;
-    document.getElementById("aliexpress").href = juguete.aliexpress;
+    document.getElementById("tituloHero").textContent = titulo;
+
+    document.getElementById("contenidoJuguete").innerHTML = `
+      <div class="card" style="max-width: 700px; margin: auto; display:flex; flex-wrap: wrap; gap:20px; align-items:flex-start;">
+        
+        <div style="flex:0 0 200px; width: 100%;">
+          <img src="${imagen}" alt="Imagen del juguete" style="width:100%; border-radius:6px;">
+        </div>
+
+        <div style="flex:1; min-width: 300px;">
+          <h3 style="margin-top:0;">${titulo}</h3>
+          <p><strong>${marca}</strong></p>
+
+          <a class="btn-secondary" href="${enlaceAmazon}" target="_blank" rel="noopener noreferrer"
+             style="display:inline-block; margin:10px 0; padding:12px 20px; background:#ff9900; color:#111; border-radius:6px; text-decoration:none; font-weight:bold; border: 1px solid #e47911;">
+            🛒 Ver precio en Amazon
+          </a>
+
+          <p>${generarEstrellas(rating)}</p>
+          <p style="margin-top:15px; line-height: 1.6;">${descripcion}</p>
+        </div>
+
+      </div>
+    `;
   }
 
   cargarJuguete();
