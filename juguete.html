@@ -5,7 +5,6 @@
   <title>Juguete – MejoresJuguetes.com</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/estilos.css">
-  <meta name="description" content="Ficha completa del juguete con valoración, descripción y enlaces a Amazon y AliExpress.">
 </head>
 
 <body>
@@ -53,11 +52,6 @@
 <footer class="footer">
   <div class="container">
     <p>© 2025 MejoresJuguetes.com – Todos los derechos reservados</p>
-    <div class="footer-links">
-      <a href="privacidad.html">Política de privacidad</a>
-      <a href="cookies.html">Política de cookies</a>
-      <a href="aviso-legal.html">Aviso legal</a>
-    </div>
   </div>
 </footer>
 
@@ -69,17 +63,6 @@
     const r = Number(rating) || 0;
     const estrellas = Math.round(r);
     return "⭐".repeat(Math.max(0, Math.min(5, estrellas))) + ` (${r}/5)`;
-  }
-
-  function normalizarCategoria(cat) {
-    if (!cat) return "Otros";
-    const mapa = {
-      "montessori": "Montessori",
-      "marvel": "Marvel",
-      "munecas": "Muñecas",
-      "puzzles": "Puzzles"
-    };
-    return mapa[cat] || cat;
   }
 
   function construirImagen(j) {
@@ -118,22 +101,31 @@
       const res = await fetch("juguetes.json?_=" + Date.now());
       const data = await res.json();
 
-      const j = data[id];
-      if (!j) {
+      let juguete = null;
+      let categoria = null;
+
+      for (const cat in data) {
+        if (data[cat][id]) {
+          juguete = data[cat][id];
+          categoria = cat;
+          break;
+        }
+      }
+
+      if (!juguete) {
         document.getElementById("contenidoJuguete").innerHTML = "<p>Error: juguete no encontrado.</p>";
         return;
       }
 
-      const titulo = j.titulo || "Juguete sin título";
-      const categoria = normalizarCategoria(j.categoria);
-      const edad = j.edad || "";
-      const marca = j.marca || "";
-      const rating = j.rating || 4.5;
-      const descripcion = j.descripcion || "Sin descripción disponible.";
+      const titulo = juguete.titulo || "Juguete sin título";
+      const edad = juguete.edad || "";
+      const marca = juguete.marca || "";
+      const rating = juguete.rating || 4.5;
+      const descripcion = juguete.descripcion || "Sin descripción disponible.";
 
-      const imgSrc = construirImagen(j);
-      const enlaceAmazon = construirEnlaceAmazon(j, id);
-      const enlaceAliExpress = construirEnlaceAliExpress(j);
+      const imgSrc = construirImagen(juguete);
+      const enlaceAmazon = construirEnlaceAmazon(juguete, id);
+      const enlaceAliExpress = construirEnlaceAliExpress(juguete);
 
       document.getElementById("tituloHero").textContent = titulo;
       document.getElementById("breadcrumb").textContent =
