@@ -69,37 +69,17 @@
 
 <script>
   const AFFILIATE_TAG = "mejoresjuguetes-21";
-  let juguetesData = {}; // Datos de juguetes.json
-
-  /* ⭐ Estrellas */
-  function generarEstrellas(rating) {
-    const r = Number(rating) || 0;
-    const estrellas = Math.round(r);
-    return "⭐".repeat(Math.max(0, Math.min(5, estrellas))) + ` (${r}/5)`;
-  }
-
-  /* ⭐ Rating alternativo */
-  function ratingAlternativo(titulo) {
-    let seed = 0;
-    for (let i = 0; i < titulo.length; i++) seed += titulo.charCodeAt(i);
-    const random = (seed % 13) / 10;
-    return (3.5 + random).toFixed(1);
-  }
+  let juguetesData = {};
 
   /* ⭐ Cargar juguetes.json */
-  async function cargarJuguetesData() {
-    try {
-      const res = await fetch('juguetes.json');
-      juguetesData = await res.json();
-    } catch (e) {
-      console.error("No se pudo cargar juguetes.json", e);
-      juguetesData = {};
-    }
+  async function cargarJuguetes() {
+    const res = await fetch("juguetes.json");
+    juguetesData = await res.json();
   }
 
-  /* ⭐ Cargar juguete */
+  /* ⭐ Cargar juguete individual */
   async function cargarJuguete() {
-    await cargarJuguetesData();
+    await cargarJuguetes();
 
     const params = new URLSearchParams(window.location.search);
     const categoria = params.get("cat");
@@ -115,12 +95,10 @@
     const titulo = juguete.titulo || "Juguete sin nombre";
     const marca = juguete.marca || "Marca desconocida";
     const descripcion = juguete.descripcion || "Sin descripción disponible.";
-    const rating = juguete.rating || ratingAlternativo(titulo);
+    const rating = juguete.rating || 4.5;
     const imagen = juguete.imagenAmazon || "img/juguete-default.png";
 
-    const enlaceAmazon = juguete.amazon
-      ? juguete.amazon + `?tag=${AFFILIATE_TAG}`
-      : `https://www.amazon.es/s?k=${encodeURIComponent(titulo)}&tag=${AFFILIATE_TAG}`;
+    const enlaceAmazon = juguete.amazon + `?tag=${AFFILIATE_TAG}`;
 
     document.getElementById("tituloHero").textContent = titulo;
 
@@ -128,7 +106,7 @@
       <div class="card" style="max-width: 700px; margin: auto; display:flex; flex-wrap: wrap; gap:20px; align-items:flex-start;">
         
         <div style="flex:0 0 200px; width: 100%;">
-          <img src="${imagen}" alt="Imagen del juguete" style="width:100%; border-radius:6px;">
+          <img src="${imagen}" alt="${titulo}" style="width:100%; border-radius:6px;">
         </div>
 
         <div style="flex:1; min-width: 300px;">
@@ -140,7 +118,7 @@
             🛒 Ver precio en Amazon
           </a>
 
-          <p>${generarEstrellas(rating)}</p>
+          <p>⭐ ${rating}/5</p>
           <p style="margin-top:15px; line-height: 1.6;">${descripcion}</p>
         </div>
 
@@ -150,6 +128,5 @@
 
   cargarJuguete();
 </script>
-
 </body>
 </html>
