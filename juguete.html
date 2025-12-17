@@ -63,7 +63,7 @@
 
 <script>
   const DEFAULT_IMG = "img/default-toy.png";
-  const AFFILIATE_TAG = "librarium01-21"; // cambia aquí cuando tengas el de MejoresJuguetes
+  const AFFILIATE_TAG = "librarium01-21";
 
   function generarEstrellas(rating) {
     const r = Number(rating) || 0;
@@ -76,7 +76,8 @@
     const mapa = {
       "montessori": "Montessori",
       "marvel": "Marvel",
-      "munecas": "Muñecas"
+      "munecas": "Muñecas",
+      "puzzles": "Puzzles"
     };
     return mapa[cat] || cat;
   }
@@ -90,10 +91,9 @@
 
   function construirEnlaceAmazon(j, asin) {
     if (j.amazon && j.amazon.trim() !== "") {
-      // añade tu tag si quieres que siempre lo lleve
       if (j.amazon.includes("tag=")) return j.amazon;
-      const separador = j.amazon.includes("?") ? "&" : "?";
-      return j.amazon + separador + "tag=" + AFFILIATE_TAG;
+      const sep = j.amazon.includes("?") ? "&" : "?";
+      return j.amazon + sep + "tag=" + AFFILIATE_TAG;
     }
     return "https://www.amazon.es/s?k=" + encodeURIComponent(j.titulo || asin) + "&tag=" + AFFILIATE_TAG;
   }
@@ -102,13 +102,12 @@
     if (j.aliexpress && j.aliexpress.trim() !== "") {
       return j.aliexpress;
     }
-    // si no hay enlace, devolvemos master link genérico (si lo usas)
-    return "https://s.click.aliexpress.com/e/_master_link_aqui";
+    return "https://s.click.aliexpress.com/e/_master_link";
   }
 
   async function cargarJuguete() {
     const params = new URLSearchParams(window.location.search);
-    const id = params.get("id"); // ASIN
+    const id = params.get("id");
 
     if (!id) {
       document.getElementById("contenidoJuguete").innerHTML = "<p>Error: juguete no especificado.</p>";
@@ -121,7 +120,7 @@
 
       const j = data[id];
       if (!j) {
-        document.getElementById("contenidoJuguete").innerHTML = "<p>Error: juguete no encontrado en el catálogo.</p>";
+        document.getElementById("contenidoJuguete").innerHTML = "<p>Error: juguete no encontrado.</p>";
         return;
       }
 
@@ -167,7 +166,6 @@
         </div>
       `;
 
-      // Fallback de imagen si Amazon falla
       const img = document.getElementById("imgJuguete");
       img.addEventListener("error", () => {
         img.src = DEFAULT_IMG;
