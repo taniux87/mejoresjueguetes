@@ -213,6 +213,13 @@
   </div>
 </footer>
 <script>
+  let juguetesData = {};
+
+async function cargarJuguetes() {
+  const res = await fetch("juguetes.json");
+  juguetesData = await res.json();
+}
+
   /* ✅ CONFIGURACIÓN */
   const AFFILIATE_TAG = "mejoresjuguetes-21";
   const MAX_RESULTS = 12;
@@ -302,21 +309,9 @@
     return `https://www.amazon.es/s?k=${query}&tag=${AFFILIATE_TAG}`;
   }
 
-  function card(item) {
-    const info = item.volumeInfo || {};
-    const titulo = info.title || "Juguete no disponible";
-    const autor = info.authors?.join(", ") || "Marca desconocida";
-    const rating = info.averageRating || ratingAlternativo(titulo);
+  function card(item) { const titulo = item.titulo || "Juguete sin nombre"; const marca = item.marca || "Marca desconocida"; const rating = item.rating || ratingAlternativo(titulo); const imagen = item.imagenAmazon || "img/juguete-default.png"; const enlace = item.amazon + `?tag=${AFFILIATE_TAG}`;
 
-    return `
-      <a href="${enlaceAmazon(titulo, autor)}" class="card" target="_blank" rel="noopener noreferrer">
-        <img src="${portada(info)}" alt="Imagen del juguete">
-        <h3>${titulo}</h3>
-        <p><strong>${autor}</strong></p>
-        <p>${generarEstrellas(rating)}</p>
-      </a>
-    `;
-  }
+   return ` <a href="${enlace}" class="card" target="_blank"> <img src="${imagen}" alt="${titulo}"> <h3>${titulo}</h3> <p><strong>${marca}</strong></p> <p>${generarEstrellas(rating)}</p> </a> `; }
 
   /* ✅ CARGAR SUBPESTAÑAS */
   function cargarSubtabs() {
@@ -398,6 +393,8 @@
   categoriaActual = "infantil";
   cargarSubtabs();
   cargarCategoria();
+  await cargarJuguetes();
+
 </script>
 
 </body>
