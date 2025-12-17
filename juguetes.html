@@ -2,352 +2,70 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Juguetes – MejoresJuguetes.com</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/estilos.css">
-  <meta name="description" content="Catálogo completo de juguetes por edades, Montessori, marcas y temáticas. Explora y salta directamente a Amazon o AliExpress.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juguetes por Categoría</title>
 
   <style>
-    /* === ESTILOS DE LIBRARIUM ADAPTADOS === */
-
-    .tabs {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 25px;
-      flex-wrap: wrap;
-    }
-
-    .tab-btn {
-      padding: 10px 18px;
-      background: #0A3D62;
-      color: #fff;
-      border-radius: 8px;
-      cursor: pointer;
-      border: 1px solid #082f4a;
-      transition: 0.2s ease;
-      font-weight: 600;
-    }
-
-    .tab-btn:hover {
-      background: #082f4a;
-    }
-
-    .tab-btn.active {
-      background: #C9A86A;
-      color: #111;
-      border-color: #b8955c;
-    }
-
-    .subtabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 15px;
-      flex-wrap: wrap;
-    }
-
-    .subtab-btn {
-      padding: 8px 14px;
-      background: #0A3D62;
-      color: #fff;
-      border-radius: 6px;
-      cursor: pointer;
-      border: 1px solid #082f4a;
-      transition: 0.2s ease;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    .subtab-btn:hover {
-      background: #082f4a;
-    }
-
-    .subtab-btn.active {
-      background: #C9A86A;
-      color: #111;
-      border-color: #b8955c;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 15px;
-      border: 1px solid #e5e5e5;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      transition: 0.2s ease;
-      display: block;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #FAF9F6;
+      margin: 0;
+      padding: 20px;
       text-align: center;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    h1 {
+      font-size: 2.2rem;
+      color: #444;
+      margin-bottom: 30px;
     }
 
-    .card img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-
-    .card h3 {
-      font-size: 1rem;
-      margin: 8px 0;
-    }
-
-    .card p {
-      font-size: 0.9rem;
-      margin: 3px 0;
-    }
-
-    .pagination {
-      margin-top: 20px;
+    .categorias {
       display: flex;
-      justify-content: center;
-      gap: 12px;
-      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 500px;
+      margin: 0 auto;
     }
 
-    .pagination button {
-      padding: 8px 14px;
-      border-radius: 6px;
-      border: none;
-      background: #0A3D62;
-      color: #fff;
-      cursor: pointer;
-      transition: 0.2s ease;
+    .categoria-btn {
+      padding: 18px;
+      border-radius: 12px;
+      font-size: 1.3rem;
       font-weight: 600;
+      text-decoration: none;
+      color: #333;
+      display: block;
+      transition: 0.2s ease;
+      border: none;
     }
 
-    .pagination button:hover:not(:disabled) {
-      background: #082f4a;
-    }
+    /* COLORES PASTEL MONTESSORI */
+    .montessori { background: #A7C7E7; }
+    .munecas { background: #F7C6D0; }
+    .monsterflex { background: #CDECC9; }
+    .puzzles { background: #F9E7A8; }
+    .generales { background: #E3D4F3; }
 
-    .pagination button:disabled {
-      background: #999;
-      cursor: not-allowed;
+    /* HOVER */
+    .categoria-btn:hover {
+      transform: scale(1.03);
+      filter: brightness(1.05);
     }
   </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="container header-flex">
+  <h1>Juguetes por Categoría</h1>
 
-    <div class="logo-box">
-      <img src="img/hero.png" alt="Logo MejoresJuguetes" class="logo-img">
-      <span class="logo-text">MejoresJuguetes.com</span>
-    </div>
-
-    <nav class="menu">
-      <a href="index.html">Inicio</a>
-      <a href="blog.html">Blog</a>
-      <a href="juguetes.html" class="active">Juguetes</a>
-      <a href="rankings.html">Rankings</a>
-      <a href="resenas.html">Reseñas</a>
-      <a href="contacto.html">Contacto</a>
-    </nav>
-
-    <div class="search-box">
-      <form action="buscar.html" method="GET">
-        <input type="text" name="q" placeholder="Buscar juguetes..." required>
-        <button type="submit">🔍</button>
-      </form>
-    </div>
-
+  <div class="categorias">
+    <a href="categoria.html?cat=montessori" class="categoria-btn montessori">Montessori</a>
+    <a href="categoria.html?cat=munecas" class="categoria-btn munecas">Muñecas</a>
+    <a href="categoria.html?cat=monsterflex" class="categoria-btn monsterflex">Monsterflex</a>
+    <a href="categoria.html?cat=puzzles" class="categoria-btn puzzles">Puzzles</a>
+    <a href="categoria.html?cat=generales" class="categoria-btn generales">Juguetes Generales</a>
   </div>
-</header>
-
-<section class="hero" style="background-image: url('img/hero.png');">
-  <div class="container" style="background: rgba(0,0,0,0.55); padding: 50px 30px; border-radius: 12px;">
-    <h2 style="color: #fff; font-size: 2.2rem;">Catálogo de Juguetes</h2>
-    <p style="color: #ddd; font-size: 1.1rem;">Explora juguetes por edades, Montessori, marcas y temáticas.</p>
-  </div>
-</section>
-
-<main class="container">
-
-  <!-- TABS PRINCIPALES -->
-  <section class="section">
-    <div class="tabs">
-      <button class="tab-btn active" data-main="edades">Edades</button>
-      <button class="tab-btn" data-main="montessori">Montessori</button>
-      <button class="tab-btn" data-main="marcas">Marcas</button>
-      <button class="tab-btn" data-main="tematicas">Temáticas</button>
-      <button class="tab-btn" data-main="generales">Generales</button>
-    </div>
-  </section>
-
-  <!-- SUBTABS -->
-  <section class="section">
-    <div id="subtabs" class="subtabs"></div>
-  </section>
-
-  <!-- RESULTADOS -->
-  <section class="section">
-    <div id="resultados" class="grid"></div>
-
-    <div id="paginacion" class="pagination">
-      <button id="btnAnterior" disabled>← Anterior</button>
-      <span id="infoPagina" style="font-size:0.9rem; color:#555;"></span>
-      <button id="btnSiguiente" disabled>Siguiente →</button>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <p>© 2025 MejoresJuguetes.com – Todos los derechos reservados</p>
-    <div class="footer-links">
-      <a href="privacidad.html">Política de privacidad</a>
-      <a href="cookies.html">Política de cookies</a>
-      <a href="aviso-legal.html">Aviso legal</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  /* === CONFIGURACIÓN === */
-  const AFFILIATE_TAG = "librarium01-21";
-  const MAX_RESULTS = 12;
-
-  let paginaActual = 0;
-  let categoriaActual = "";
-  let subcategoriaActual = "";
-
-  /* === SUBTABS DE JUGUETES === */
-  const SUBTABS = {
-    edades: {
-      "1 año": "juguetes 1 año educativos",
-      "2 años": "juguetes 2 años motricidad",
-      "3 años educativos": "juguetes 3 años educativos"
-    },
-
-    montessori: {
-      "Básicos": "juguetes montessori madera",
-      "Sensorial": "montessori sensorial juguetes",
-      "Motricidad": "montessori motricidad fina"
-    },
-
-    marcas: {
-      "Marvel": "juguetes marvel niños",
-      "Monsterflex": "juguetes monsterflex figuras",
-      "LEGO": "lego niños sets",
-      "Playmobil": "playmobil niños juguetes"
-    },
-
-    tematicas: {
-      "STEM": "juguetes STEM ciencia niños",
-      "Creatividad": "juguetes creatividad arte",
-      "Música": "juguetes musicales niños",
-      "Construcción": "juguetes construcción bloques"
-    },
-
-    generales: {
-      "Más vendidos": "juguetes más vendidos 2025",
-      "Recomendados": "mejores juguetes recomendados",
-      "Novedades": "novedades juguetes 2025"
-    }
-  };
-
-  /* === UTILIDADES === */
-  function generarEstrellas(rating) {
-    const r = Number(rating) || 0;
-    return "⭐".repeat(Math.round(r)) + ` (${r}/5)`;
-  }
-
-  function ratingAlternativo(nombre) {
-    let seed = 0;
-    for (let i = 0; i < nombre.length; i++) seed += nombre.charCodeAt(i);
-    return (3.5 + (seed % 13) / 10).toFixed(1);
-  }
-
-  function imagenDefault() {
-    return "img/default-toy.png";
-  }
-
-  function card(nombre) {
-    const rating = ratingAlternativo(nombre);
-
-    return `
-      <a href="juguete.html?nombre=${encodeURIComponent(nombre)}" class="card">
-        <img src="${imagenDefault()}" alt="${nombre}">
-        <h3>${nombre}</h3>
-        <p>${generarEstrellas(rating)}</p>
-      </a>
-    `;
-  }
-
-  /* === CARGAR SUBTABS === */
-  function cargarSubtabs() {
-    const cont = document.getElementById("subtabs");
-    cont.innerHTML = "";
-
-    const subtabs = SUBTABS[categoriaActual];
-    const keys = Object.keys(subtabs);
-
-    keys.forEach((nombre, index) => {
-      cont.innerHTML += `
-        <button class="subtab-btn ${index === 0 ? "active" : ""}" data-sub="${nombre}">${nombre}</button>
-      `;
-    });
-
-    subcategoriaActual = keys[0];
-  }
-
-  /* === CARGAR RESULTADOS (SIMULADOS) === */
-  function cargarCategoria() {
-    const subtabs = SUBTABS[categoriaActual];
-    if (!subtabs) return;
-
-    const query = subtabs[subcategoriaActual];
-    if (!query) return;
-
-    const resultados = Array.from({ length: MAX_RESULTS }, (_, i) => `${subcategoriaActual} ${i + 1}`);
-
-    document.getElementById("resultados").innerHTML = resultados.map(card).join("");
-
-    document.getElementById("infoPagina").textContent = `Página ${paginaActual + 1} de 1`;
-
-    document.getElementById("btnAnterior").disabled = true;
-    document.getElementById("btnSiguiente").disabled = true;
-  }
-
-  /* === EVENTOS === */
-  document.querySelectorAll(".tab-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      categoriaActual = btn.dataset.main;
-      paginaActual = 0;
-
-      cargarSubtabs();
-      cargarCategoria();
-    });
-  });
-
-  document.getElementById("subtabs").addEventListener("click", e => {
-    if (e.target.classList.contains("subtab-btn")) {
-      document.querySelectorAll(".subtab-btn").forEach(b => b.classList.remove("active"));
-      e.target.classList.add("active");
-
-      subcategoriaActual = e.target.dataset.sub;
-      paginaActual = 0;
-
-      cargarCategoria();
-    }
-  });
-
-  /* === CARGA INICIAL === */
-  categoriaActual = "edades";
-  cargarSubtabs();
-  cargarCategoria();
-</script>
 
 </body>
 </html>
