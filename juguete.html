@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Nombre del Juguete – MejoresJuguetes.com</title>
-  <meta name="description" content="Detalles completos del juguete: edad recomendada, tipo, marca, valoración, precio y características.">
+  <title>Juguetes por categoría – MejoresJuguetes.com</title>
+  <meta name="description" content="Listado de juguetes por edad o categoría: Montessori, Marvel, Monsterflex y más.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/estilos.css">
 
@@ -49,81 +49,36 @@
   <div class="breadcrumbs">
     <a href="index.html">Inicio</a> › 
     <a href="juguetes.html">Juguetes</a> › 
-    <span>Nombre del juguete</span>
+    <span>Juguetes 1 año</span> <!-- CAMBIA ESTO SEGÚN LA CATEGORÍA -->
   </div>
 
-  <!-- FICHA -->
-  <section class="section ficha-juguete">
-
-    <div class="ficha-grid">
-
-      <div class="ficha-imagen">
-        <img src="img/juguete-ejemplo.jpg" alt="Nombre del juguete">
-      </div>
-
-      <div class="ficha-info">
-        <h1>Nombre del juguete</h1>
-
-        <p><strong>Edad recomendada:</strong> 3 – 6 años</p>
-        <p><strong>Tipo:</strong> Montessori / Educativo / STEM</p>
-        <p><strong>Marca:</strong> Marca del juguete</p>
-        <p><strong>Valoración:</strong> ⭐ 4.7</p>
-
-        <div class="precio-box">
-          <p><strong>Precio aproximado:</strong> 24,99 €</p>
-        </div>
-
-        <a href="https://www.amazon.es/dp/XXXXXXXX?tag=librarium01-21" target="_blank" class="btn-amazon">
-          Ver en Amazon
-        </a>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- DESCRIPCIÓN -->
+  <!-- LISTADO DE JUGUETES POR CATEGORÍA -->
   <section class="section">
-    <h2>Descripción</h2>
-    <p>
-      Aquí va la descripción completa del juguete. Explica qué incluye, qué beneficios tiene,
-      por qué es educativo, qué habilidades desarrolla y por qué es una buena compra para los padres.
-    </p>
-  </section>
+    <h1>Juguetes 1 año</h1> <!-- CAMBIA ESTO SEGÚN LA CATEGORÍA -->
+    <p>Selección de juguetes recomendados para 1 año: seguros, educativos y adaptados a su etapa de desarrollo.</p>
 
-  <!-- CARACTERÍSTICAS -->
-  <section class="section">
-    <h2>Características principales</h2>
-    <ul>
-      <li>Material de madera natural</li>
-      <li>Incluye 24 piezas de colores</li>
-      <li>Desarrolla motricidad fina</li>
-      <li>Ideal para método Montessori</li>
-      <li>Certificación CE</li>
-    </ul>
-  </section>
-
-  <!-- RELACIONADOS -->
-  <section class="section">
-    <h2>Juguetes relacionados</h2>
     <div class="grid">
-
-      <a href="juguete2.html" class="card">
-        <img src="img/juguete2.jpg" alt="Juguete relacionado 1">
-        <h3>Juguete relacionado 1</h3>
-      </a>
-
-      <a href="juguete3.html" class="card">
-        <img src="img/juguete3.jpg" alt="Juguete relacionado 2">
-        <h3>Juguete relacionado 2</h3>
-      </a>
-
-      <a href="juguete4.html" class="card">
-        <img src="img/juguete4.jpg" alt="Juguete relacionado 3">
-        <h3>Juguete relacionado 3</h3>
-      </a>
-
+      <!-- TARJETA DE JUGUETE -->
+      <div class="card">
+        <img src="img/default-toy.png" alt="Nombre del juguete">
+        <h3>Nombre del juguete</h3>
+        <p>Descripción corta del juguete y beneficios.</p>
+        <p><strong>⭐ 4.6</strong></p>
+        <div class="botones">
+          <a href="https://www.amazon.es/dp/XXXXXXXX?tag=TU_TAG" class="btn-amazon" target="_blank">Ver en Amazon</a>
+          <a href="https://s.click.aliexpress.com/e/_c42aAy5F" class="btn-aliexpress" target="_blank">Ver en AliExpress</a>
+        </div>
+      </div>
+      <!-- DUPLICA ESTE BLOQUE PARA CADA JUGUETE DE LA CATEGORÍA -->
     </div>
+
+    <!-- PAGINACIÓN (SI LA NECESITAS) -->
+    <div class="paginacion">
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+    </div>
+
   </section>
 
 </main>
