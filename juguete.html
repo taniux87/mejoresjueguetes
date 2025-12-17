@@ -2,19 +2,14 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Juguetes por categoría – MejoresJuguetes.com</title>
-  <meta name="description" content="Listado de juguetes por edad o categoría: Montessori, Marvel, Monsterflex y más.">
+  <title>Juguete – MejoresJuguetes.com</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/estilos.css">
-
-  <!-- AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1152236234412271"
-     crossorigin="anonymous"></script>
+  <meta name="description" content="Ficha completa del juguete con valoración, descripción y enlaces a Amazon y AliExpress.">
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="container header-flex">
 
@@ -42,48 +37,19 @@
   </div>
 </header>
 
-<!-- CONTENIDO -->
-<main class="container">
-
-  <!-- MIGAS -->
-  <div class="breadcrumbs">
-    <a href="index.html">Inicio</a> › 
-    <a href="juguetes.html">Juguetes</a> › 
-    <span>Juguetes 1 año</span> <!-- CAMBIA ESTO SEGÚN LA CATEGORÍA -->
+<section class="hero" style="background-image: url('img/hero.png');">
+  <div class="container" style="background: rgba(0,0,0,0.55); padding: 50px 30px; border-radius: 12px;">
+    <h2 id="tituloHero" style="color: #fff; font-size: 2.2rem;">Cargando...</h2>
+    <p id="breadcrumb" style="color:#ddd; margin-top:8px; font-size:0.95rem;"></p>
   </div>
+</section>
 
-  <!-- LISTADO DE JUGUETES POR CATEGORÍA -->
-  <section class="section">
-    <h1>Juguetes 1 año</h1> <!-- CAMBIA ESTO SEGÚN LA CATEGORÍA -->
-    <p>Selección de juguetes recomendados para 1 año: seguros, educativos y adaptados a su etapa de desarrollo.</p>
-
-    <div class="grid">
-      <!-- TARJETA DE JUGUETE -->
-      <div class="card">
-        <img src="img/default-toy.png" alt="Nombre del juguete">
-        <h3>Nombre del juguete</h3>
-        <p>Descripción corta del juguete y beneficios.</p>
-        <p><strong>⭐ 4.6</strong></p>
-        <div class="botones">
-          <a href="https://www.amazon.es/dp/XXXXXXXX?tag=TU_TAG" class="btn-amazon" target="_blank">Ver en Amazon</a>
-          <a href="https://s.click.aliexpress.com/e/_c42aAy5F" class="btn-aliexpress" target="_blank">Ver en AliExpress</a>
-        </div>
-      </div>
-      <!-- DUPLICA ESTE BLOQUE PARA CADA JUGUETE DE LA CATEGORÍA -->
-    </div>
-
-    <!-- PAGINACIÓN (SI LA NECESITAS) -->
-    <div class="paginacion">
-      <a href="#" class="active">1</a>
-      <a href="#">2</a>
-      <a href="#">3</a>
-    </div>
-
+<main class="container">
+  <section class="section" id="contenidoJuguete">
+    <p>Cargando datos...</p>
   </section>
-
 </main>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <p>© 2025 MejoresJuguetes.com – Todos los derechos reservados</p>
@@ -94,6 +60,127 @@
     </div>
   </div>
 </footer>
+
+<script>
+  const DEFAULT_IMG = "img/default-toy.png";
+  const AFFILIATE_TAG = "librarium01-21"; // cambia aquí cuando tengas el de MejoresJuguetes
+
+  function generarEstrellas(rating) {
+    const r = Number(rating) || 0;
+    const estrellas = Math.round(r);
+    return "⭐".repeat(Math.max(0, Math.min(5, estrellas))) + ` (${r}/5)`;
+  }
+
+  function normalizarCategoria(cat) {
+    if (!cat) return "Otros";
+    const mapa = {
+      "montessori": "Montessori",
+      "marvel": "Marvel",
+      "munecas": "Muñecas"
+    };
+    return mapa[cat] || cat;
+  }
+
+  function construirImagen(j) {
+    if (j.imagenAmazon && j.imagenAmazon.trim() !== "") {
+      return j.imagenAmazon.trim();
+    }
+    return DEFAULT_IMG;
+  }
+
+  function construirEnlaceAmazon(j, asin) {
+    if (j.amazon && j.amazon.trim() !== "") {
+      // añade tu tag si quieres que siempre lo lleve
+      if (j.amazon.includes("tag=")) return j.amazon;
+      const separador = j.amazon.includes("?") ? "&" : "?";
+      return j.amazon + separador + "tag=" + AFFILIATE_TAG;
+    }
+    return "https://www.amazon.es/s?k=" + encodeURIComponent(j.titulo || asin) + "&tag=" + AFFILIATE_TAG;
+  }
+
+  function construirEnlaceAliExpress(j) {
+    if (j.aliexpress && j.aliexpress.trim() !== "") {
+      return j.aliexpress;
+    }
+    // si no hay enlace, devolvemos master link genérico (si lo usas)
+    return "https://s.click.aliexpress.com/e/_master_link_aqui";
+  }
+
+  async function cargarJuguete() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id"); // ASIN
+
+    if (!id) {
+      document.getElementById("contenidoJuguete").innerHTML = "<p>Error: juguete no especificado.</p>";
+      return;
+    }
+
+    try {
+      const res = await fetch("juguetes.json?_=" + Date.now());
+      const data = await res.json();
+
+      const j = data[id];
+      if (!j) {
+        document.getElementById("contenidoJuguete").innerHTML = "<p>Error: juguete no encontrado en el catálogo.</p>";
+        return;
+      }
+
+      const titulo = j.titulo || "Juguete sin título";
+      const categoria = normalizarCategoria(j.categoria);
+      const edad = j.edad || "";
+      const marca = j.marca || "";
+      const rating = j.rating || 4.5;
+      const descripcion = j.descripcion || "Sin descripción disponible.";
+
+      const imgSrc = construirImagen(j);
+      const enlaceAmazon = construirEnlaceAmazon(j, id);
+      const enlaceAliExpress = construirEnlaceAliExpress(j);
+
+      document.getElementById("tituloHero").textContent = titulo;
+      document.getElementById("breadcrumb").textContent =
+        "Inicio › Juguetes › " + categoria + (edad ? " › " + edad : "");
+
+      document.getElementById("contenidoJuguete").innerHTML = `
+        <div class="card" style="max-width: 900px; margin: auto; display:flex; flex-wrap: wrap; gap:20px; align-items:flex-start;">
+          <div style="flex:0 0 260px; width:100%;">
+            <img id="imgJuguete" src="${imgSrc}" alt="${titulo}" style="width:100%; border-radius:6px; object-fit:cover;">
+          </div>
+          <div style="flex:1; min-width: 280px;">
+            <h3 style="margin-top:0;">${titulo}</h3>
+            <p><strong>${marca}</strong>${edad ? " · " + edad : ""}</p>
+            <p>${generarEstrellas(rating)}</p>
+
+            <div style="margin:15px 0; display:flex; flex-wrap:wrap; gap:10px;">
+              <a href="${enlaceAmazon}" target="_blank" rel="noopener noreferrer"
+                 style="display:inline-block; padding:12px 20px; background:#ff9900; color:#111; border-radius:6px; text-decoration:none; font-weight:bold; border: 1px solid #e47911;">
+                🛒 Ver en Amazon
+              </a>
+
+              <a href="${enlaceAliExpress}" target="_blank" rel="noopener noreferrer"
+                 style="display:inline-block; padding:12px 20px; background:#ff2e63; color:#fff; border-radius:6px; text-decoration:none; font-weight:bold;">
+                🛒 Ver en AliExpress
+              </a>
+            </div>
+
+            <p style="margin-top:10px; line-height: 1.6;">${descripcion}</p>
+          </div>
+        </div>
+      `;
+
+      // Fallback de imagen si Amazon falla
+      const img = document.getElementById("imgJuguete");
+      img.addEventListener("error", () => {
+        img.src = DEFAULT_IMG;
+      });
+
+    } catch (e) {
+      console.error("Error cargando juguete:", e);
+      document.getElementById("contenidoJuguete").innerHTML = "<p>Error al cargar los datos del juguete.</p>";
+    }
+  }
+
+  cargarJuguete();
+</script>
 
 </body>
 </html>
