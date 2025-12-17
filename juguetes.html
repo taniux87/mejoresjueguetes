@@ -256,26 +256,26 @@
     for (let i = 0; i < titulo.length; i++) seed += titulo.charCodeAt(i);
     return (3.5 + (seed % 13) / 10).toFixed(1);
   }
-
-  async function buscarJuguetes(categoria, subcategoria) {
-    const categoriaObj = juguetesData[categoria];
-    if (!categoriaObj) {
-      return { items: [], total: 0 };
-    }
-
-    if (!subcategoria) {
-      const items = Object.values(categoriaObj);
-      return { items, total: items.length };
-    }
-
-    const item = categoriaObj[subcategoria];
-    if (!item) {
-      return { items: [], total: 0 };
-    }
-
-    return { items: [item], total: 1 };
+async function buscarJuguetes(categoria, subcategoria) {
+  const categoriaObj = juguetesData[categoria];
+  if (!categoriaObj) {
+    return { items: [], total: 0 };
   }
 
+  // Si NO hay subcategoría → devolver todos los juguetes de la categoría
+  if (!subcategoria) {
+    const items = Object.values(categoriaObj);
+    return { items, total: items.length };
+  }
+
+  // Si hay subcategoría → devolver solo ese juguete
+  const item = categoriaObj[subcategoria];
+  if (!item) {
+    return { items: [], total: 0 };
+  }
+
+  return { items: [item], total: 1 };
+}
   function card(item) {
     const titulo = item.titulo || "Juguete sin nombre";
     const marca = item.marca || "Marca desconocida";
