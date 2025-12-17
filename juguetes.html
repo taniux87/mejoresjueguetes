@@ -55,11 +55,73 @@
       transform: scale(1.03);
       filter: brightness(1.05);
     }
+    /* ✅ Paginación (igual que Rankings) */
+    .pagination {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .pagination button {
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: none;
+      background: #0A3D62;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.2s ease;
+      font-weight: 600;
+    }
+
+    .pagination button:hover:not(:disabled) {
+      background: #082f4a;
+    }
+
+    .pagination button:disabled {
+      background: #999;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 
 <body>
+<!-- HEADER -->
+<header class="header">
+  <div class="container header-flex">
 
+    <div class="logo-box">
+      <img src="img/hero.png" alt="Logo MejoresJuguetes" class="logo-img">
+      <span class="logo-text">MejoresJuguetes.com</span>
+    </div>
+
+   <nav class="menu">
+      <a href="index.html">Inicio</a>
+      <a href="blog.html">Blog</a>
+      <a href="juguetes.html">Juguetes</a>
+      <a href="rankings.html" class="active">Rankings</a>
+      <a href="resenas.html">Reseñas</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <div class="search-box">
+      <form action="buscar.html" method="GET">
+        <input type="text" name="q" placeholder="Buscar juguetes..." required>
+        <button type="submit">🔍</button>
+      </form>
+    </div>
+
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="background-image: url('img/hero.png');">
+  <div class="container hero-overlay">
+    <h2>Rankings de juguetes</h2>
+    <p>Los juguetes más recomendados, valorados y vendidos del año.</p>
+  </div>
+</section>
   <h1>Juguetes por Categoría</h1>
 
   <div class="categorias">
