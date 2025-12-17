@@ -2,175 +2,125 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Juguete – MejoresJuguetes.com</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/estilos.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle del Juguete</title>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #FAF9F6;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      color: #444;
+    }
+
+    .card {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .info {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #666;
+    }
+
+    .btns {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333;
+      transition: 0.2s ease;
+    }
+
+    .amazon { background: #A7C7E7; }
+    .aliexpress { background: #F7C6D0; }
+
+    .btn:hover {
+      transform: scale(1.03);
+      filter: brightness(1.05);
+    }
+
+    .back {
+      display: block;
+      margin-top: 25px;
+      text-decoration: none;
+      color: #666;
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="header">
-  <div class="container header-flex">
+  <div class="card">
+    <img id="imagen" src="" alt="Imagen del juguete">
 
-    <div class="logo-box">
-      <img src="img/hero.png" alt="Logo MejoresJuguetes" class="logo-img">
-      <span class="logo-text">MejoresJuguetes.com</span>
+    <h1 id="titulo">Cargando...</h1>
+
+    <div class="info">
+      <p id="edad"></p>
+      <p id="marca"></p>
+      <p id="descripcion"></p>
     </div>
 
-    <nav class="menu">
-      <a href="index.html">Inicio</a>
-      <a href="blog.html">Blog</a>
-      <a href="juguetes.html" class="active">Juguetes</a>
-      <a href="rankings.html">Rankings</a>
-      <a href="resenas.html">Reseñas</a>
-      <a href="contacto.html">Contacto</a>
-    </nav>
-
-    <div class="search-box">
-      <form action="buscar.html" method="GET">
-        <input type="text" name="q" placeholder="Buscar juguetes..." required>
-        <button type="submit">🔍</button>
-      </form>
+    <div class="btns">
+      <a id="amazon" class="btn amazon" target="_blank">Comprar en Amazon</a>
+      <a id="aliexpress" class="btn aliexpress" target="_blank">Comprar en AliExpress</a>
     </div>
 
+    <a href="javascript:history.back()" class="back">← Volver</a>
   </div>
-</header>
 
-<section class="hero" style="background-image: url('img/hero.png');">
-  <div class="container" style="background: rgba(0,0,0,0.55); padding: 50px 30px; border-radius: 12px;">
-    <h2 id="tituloHero" style="color: #fff; font-size: 2.2rem;">Cargando...</h2>
-    <p id="breadcrumb" style="color:#ddd; margin-top:8px; font-size:0.95rem;"></p>
-  </div>
-</section>
+  <script>
+    async function cargarJuguete() {
+      const params = new URLSearchParams(window.location.search);
+      const categoria = params.get("cat");
+      const id = params.get("id");
 
-<main class="container">
-  <section class="section" id="contenidoJuguete">
-    <p>Cargando datos...</p>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <p>© 2025 MejoresJuguetes.com – Todos los derechos reservados</p>
-  </div>
-</footer>
-
-<script>
-  const DEFAULT_IMG = "img/default-toy.png";
-  const AFFILIATE_TAG = "librarium01-21";
-
-  function generarEstrellas(rating) {
-    const r = Number(rating) || 0;
-    const estrellas = Math.round(r);
-    return "⭐".repeat(Math.max(0, Math.min(5, estrellas))) + ` (${r}/5)`;
-  }
-
-  function construirImagen(j) {
-    if (j.imagenAmazon && j.imagenAmazon.trim() !== "") {
-      return j.imagenAmazon.trim();
-    }
-    return DEFAULT_IMG;
-  }
-
-  function construirEnlaceAmazon(j, asin) {
-    if (j.amazon && j.amazon.trim() !== "") {
-      if (j.amazon.includes("tag=")) return j.amazon;
-      const sep = j.amazon.includes("?") ? "&" : "?";
-      return j.amazon + sep + "tag=" + AFFILIATE_TAG;
-    }
-    return "https://www.amazon.es/s?k=" + encodeURIComponent(j.titulo || asin) + "&tag=" + AFFILIATE_TAG;
-  }
-
-  function construirEnlaceAliExpress(j) {
-    if (j.aliexpress && j.aliexpress.trim() !== "") {
-      return j.aliexpress;
-    }
-    return "https://s.click.aliexpress.com/e/_master_link";
-  }
-
-  async function cargarJuguete() {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
-
-    if (!id) {
-      document.getElementById("contenidoJuguete").innerHTML = "<p>Error: juguete no especificado.</p>";
-      return;
-    }
-
-    try {
-      const res = await fetch("juguetes.json?_=" + Date.now());
+      const res = await fetch("juguetes.json");
       const data = await res.json();
 
-      let juguete = null;
-      let categoria = null;
+      const juguete = data[categoria][id];
 
-      for (const cat in data) {
-        if (data[cat][id]) {
-          juguete = data[cat][id];
-          categoria = cat;
-          break;
-        }
-      }
+      document.getElementById("titulo").textContent = juguete.titulo || "Juguete";
+      document.getElementById("edad").textContent = juguete.edad ? "Edad: " + juguete.edad : "";
+      document.getElementById("marca").textContent = juguete.marca ? "Marca: " + juguete.marca : "";
+      document.getElementById("descripcion").textContent = juguete.descripcion || "";
 
-      if (!juguete) {
-        document.getElementById("contenidoJuguete").innerHTML = "<p>Error: juguete no encontrado.</p>";
-        return;
-      }
+      document.getElementById("imagen").src = juguete.imagenAmazon || "https://via.placeholder.com/500x500?text=Sin+Imagen";
 
-      const titulo = juguete.titulo || "Juguete sin título";
-      const edad = juguete.edad || "";
-      const marca = juguete.marca || "";
-      const rating = juguete.rating || 4.5;
-      const descripcion = juguete.descripcion || "Sin descripción disponible.";
-
-      const imgSrc = construirImagen(juguete);
-      const enlaceAmazon = construirEnlaceAmazon(juguete, id);
-      const enlaceAliExpress = construirEnlaceAliExpress(juguete);
-
-      document.getElementById("tituloHero").textContent = titulo;
-      document.getElementById("breadcrumb").textContent =
-        "Inicio › Juguetes › " + categoria + (edad ? " › " + edad : "");
-
-      document.getElementById("contenidoJuguete").innerHTML = `
-        <div class="card" style="max-width: 900px; margin: auto; display:flex; flex-wrap: wrap; gap:20px; align-items:flex-start;">
-          <div style="flex:0 0 260px; width:100%;">
-            <img id="imgJuguete" src="${imgSrc}" alt="${titulo}" style="width:100%; border-radius:6px; object-fit:cover;">
-          </div>
-          <div style="flex:1; min-width: 280px;">
-            <h3 style="margin-top:0;">${titulo}</h3>
-            <p><strong>${marca}</strong>${edad ? " · " + edad : ""}</p>
-            <p>${generarEstrellas(rating)}</p>
-
-            <div style="margin:15px 0; display:flex; flex-wrap:wrap; gap:10px;">
-              <a href="${enlaceAmazon}" target="_blank" rel="noopener noreferrer"
-                 style="display:inline-block; padding:12px 20px; background:#ff9900; color:#111; border-radius:6px; text-decoration:none; font-weight:bold; border: 1px solid #e47911;">
-                🛒 Ver en Amazon
-              </a>
-
-              <a href="${enlaceAliExpress}" target="_blank" rel="noopener noreferrer"
-                 style="display:inline-block; padding:12px 20px; background:#ff2e63; color:#fff; border-radius:6px; text-decoration:none; font-weight:bold;">
-                🛒 Ver en AliExpress
-              </a>
-            </div>
-
-            <p style="margin-top:10px; line-height: 1.6;">${descripcion}</p>
-          </div>
-        </div>
-      `;
-
-      const img = document.getElementById("imgJuguete");
-      img.addEventListener("error", () => {
-        img.src = DEFAULT_IMG;
-      });
-
-    } catch (e) {
-      console.error("Error cargando juguete:", e);
-      document.getElementById("contenidoJuguete").innerHTML = "<p>Error al cargar los datos del juguete.</p>";
+      document.getElementById("amazon").href = juguete.amazon;
+      document.getElementById("aliexpress").href = juguete.aliexpress;
     }
-  }
 
-  cargarJuguete();
-</script>
+    cargarJuguete();
+  </script>
 
 </body>
 </html>
