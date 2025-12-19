@@ -85,6 +85,7 @@
         { "titulo": "Espejo de Seguridad Montessori", "marca": "Bebé Lab", "rating": 4.9, "amazon": "https://www.amazon.es/dp/B08G8Y5TYY", "imagenAmazon": "https://m.media-amazon.com/images/I/61-z0MvGkOL.jpg", "descripcion": "Irrompible para autoconocimiento en bebés." },
         { "titulo": "Set de Figuras del Ciclo de Vida", "marca": "Safari Ltd Life", "rating": 4.8, "amazon": "https://www.amazon.es/dp/B000GZID5K", "imagenAmazon": "https://m.media-amazon.com/images/I/71uV8W+HkYL.jpg", "descripcion": "Evolución de rana, mariposa y planta." }
       ]
+     } 
     },
   "munecas": {
     "grandes_marcas": {
@@ -181,6 +182,7 @@
         { "titulo": "Monster High - Skelita Calaveras", "marca": "Mattel", "rating": 4.9, "amazon": "https://www.amazon.es/dp/B09P9O9X6Z", "imagenAmazon": "https://m.media-amazon.com/images/I/71R2o5-4YBL.jpg", "descripcion": "Edición especial del Día de los Muertos." },
         { "titulo": "Barriguitas - El Chalet", "marca": "Famosa", "rating": 4.8, "amazon": "https://www.amazon.es/dp/B00466K9QE", "imagenAmazon": "https://m.media-amazon.com/images/I/91u-R3S8s6L.jpg", "descripcion": "Casa clásica de dos pisos para las Barriguitas." }
       ]
+     } 
     },
   "monsterflex": {
     "figuras_estirables": {
@@ -384,6 +386,7 @@
         { "titulo": "Puzzle 1000 Piezas - Animales del Mundo", "marca": "Trefl", "rating": 4.6, "amazon": "https://www.amazon.es/dp/B0038W0PAX", "imagenAmazon": "https://m.media-amazon.com/images/I/81x-R3S8s6L.jpg", "descripcion": "Educativo y visualmente impactante para toda la familia." },
         { "titulo": "Puzzle 1000 Piezas - London Bus", "marca": "Clementoni Black & White", "rating": 4.7, "amazon": "https://www.amazon.es/dp/B0C3S8Y9NG", "imagenAmazon": "https://m.media-amazon.com/images/I/61z+V3S8s6L.jpg", "descripcion": "Efecto artístico: fondo en B/N y autobús en rojo brillante." }
       ]
+     } 
     },
   "marvel": {
     "figuras_y_coleccionismo": {
@@ -552,6 +555,7 @@
         { "titulo": "LEGO Disney - Castillo de Juegos de Anna y Olaf", "marca": "LEGO", "rating": 4.7, "amazon": "https://www.amazon.es/dp/B0BVB87716", "imagenAmazon": "https://m.media-amazon.com/images/I/71v2R3O4WXL.jpg", "descripcion": "Set 4+ con tobogán de hielo y accesorios de merienda." },
         { "titulo": "LEGO Disney - Joyero de Blancanieves", "marca": "LEGO", "rating": 4.8, "amazon": "https://www.amazon.es/dp/B0C7S7Y8N4", "imagenAmazon": "https://m.media-amazon.com/images/I/61y-V3S8s6L.jpg", "descripcion": "Caja con espejo y pulsera para que los niños la decoren." }
       ]
+     } 
     }
   "juegos_de_mesa": {
     "estrategia_y_familiares": {
@@ -598,6 +602,7 @@
         { "titulo": "Love Letter - Edición Bolsa de Tela", "marca": "Z-Man Games", "rating": 4.9, "amazon": "https://www.amazon.es/dp/B00BNM5P4V", "imagenAmazon": "https://m.media-amazon.com/images/I/61N+V3S8s6L.jpg", "descripcion": "Deducción y riesgo para entregar tu carta a la Princesa." },
         { "titulo": "Jenga - El Juego de la Torre", "marca": "Hasbro Gaming", "rating": 4.9, "amazon": "https://www.amazon.es/dp/B00005N5PF", "imagenAmazon": "https://m.media-amazon.com/images/I/81x-R3S8s6L.jpg", "descripcion": "Habilidad y nervios de acero para que no se caiga la torre." }
       ]
+     } 
     },
   "disfraces_y_accesorios": {
     "superheroes_y_princesas": {
@@ -644,6 +649,7 @@
         { "titulo": "Disfraz de Jasmine (Aladdin)", "marca": "Disney", "rating": 4.8, "amazon": "https://www.amazon.es/dp/B0BNM7P6R4", "imagenAmazon": "https://m.media-amazon.com/images/I/61-z0MvGkOL.jpg", "descripcion": "Pantalón bombacho turquesa y top con detalles de gasa y joyas." },
         { "titulo": "Kit de Explorador de la Selva", "marca": "Joyin", "rating": 4.8, "amazon": "https://www.amazon.es/dp/B08VWBK7N8", "imagenAmazon": "https://m.media-amazon.com/images/I/81u-R3S8s6L.jpg", "descripcion": "Chaleco de safari, sombrero, prismáticos y lupa funcional." }
       ]
+     } 
     },
   "patines_y_movilidad": {
     "patines_y_patinetes": {
@@ -690,6 +696,7 @@
         { "titulo": "Patinete Eléctrico para Niños (Max 15km/h)", "marca": "Razor Power Core E90", "rating": 4.6, "amazon": "https://www.amazon.es/dp/B09H1S5V8N", "imagenAmazon": "https://m.media-amazon.com/images/I/61-z0MvGkOL.jpg", "descripcion": "Hasta 80 minutos de autonomía, seguro y fácil de manejar para peques." },
         { "titulo": "Protector de Cubierta (Deck) para Patinete", "marca": "Ninebot", "rating": 4.5, "amazon": "https://www.amazon.es/dp/B0BVB87724", "imagenAmazon": "https://m.media-amazon.com/images/I/81u-R3S8s6L.jpg", "descripcion": "Goma antideslizante de alta calidad para renovar el grip de tu scooter." }
       ]
+     } 
     }
   "juego_exterior": {
     "jardin_y_diversion_aire_libre": {
@@ -736,6 +743,7 @@
         { "titulo": "Set de Bolos de Madera para Césped", "marca": "Tradition", "rating": 4.7, "amazon": "https://www.amazon.es/dp/B09H1S5V8O", "imagenAmazon": "https://m.media-amazon.com/images/I/61-z0MvGkOL.jpg", "descripcion": "Bolos clásicos gigantes con bolsa de red para transporte." },
         { "titulo": "Lona de Salto de Repuesto para Camas Elásticas", "marca": "Upper Bounce", "rating": 4.8, "amazon": "https://www.amazon.es/dp/B0BVB87727", "imagenAmazon": "https://m.media-amazon.com/images/I/81u-R3S8s6L.jpg", "descripcion": "Material de alta resistencia con protección UV y costuras reforzadas." }
       ]
+     } 
     },
   "consolas_y_perifericos": {
     "sistemas_de_entretenimiento": {
@@ -782,7 +790,7 @@
         { "titulo": "Controlador Arcade Stick para Fighting Games", "marca": "8BitDo", "rating": 4.9, "amazon": "https://www.amazon.es/dp/B08G9987KH", "imagenAmazon": "https://m.media-amazon.com/images/I/61y-V3S8s6L.jpg", "descripcion": "Compatible con Switch y PC, con botones mapeables y diseño retro." },
         { "titulo": "Monitor Gaming Portátil 15.6'' 144Hz", "marca": "Arzopa", "rating": 4.8, "amazon": "https://www.amazon.es/dp/B0C3S7Y8NB", "imagenAmazon": "https://m.media-amazon.com/images/I/81u-R3S8s6L.jpg", "descripcion": "Ideal para llevar tu PS5 o Switch de viaje con resolución Full HD." }
       ]
-    }
+    }, 
     "accesorios_tecnicos_y_confort_gaming": {
       "titulo": "Almacenamiento, Periféricos Pro y Confort",
       "items": [
@@ -808,6 +816,7 @@
         { "titulo": "Proyector Gaming 4K de Baja Latencia", "marca": "BenQ TK700STi", "rating": 4.8, "amazon": "https://www.amazon.es/dp/B0BVB87734", "imagenAmazon": "https://m.media-amazon.com/images/I/81u-R3S8s6L.jpg", "descripcion": "Juega a 120 pulgadas con solo 16ms de retraso de entrada." }
       ]
     }
+  }, 
   "videojuegos_top_ventas": {
     "exclusivos_y_multiplataforma": {
       "titulo": "Videojuegos: Los Más Vendidos para PS5, Switch y Xbox",
@@ -878,7 +887,8 @@
         { "titulo": "Sackboy: Una Aventura a lo Grande (PS5)", "marca": "Sony Interactive", "rating": 4.9, "amazon": "https://www.amazon.es/dp/B08H99BPJQ", "imagenAmazon": "https://m.media-amazon.com/images/I/81u-R3S8s6L.jpg", "descripcion": "Plataformas cooperativo encantador con un diseño artístico brutal." },
         { "titulo": "Monster Hunter Wilds (Preventa)", "marca": "Capcom", "rating": 4.9, "amazon": "https://www.amazon.es/dp/B0DVB87754", "imagenAmazon": "https://m.media-amazon.com/images/I/81x-R3S8s6L.jpg", "descripcion": "Caza monstruos colosales en entornos dinámicos de nueva generación." }
       ]
-    }
+     } 
+    }, 
   "juguetes_general_y_tendencias": {
     "moda_ciencia_y_creatividad": {
       "titulo": "Tendencias 2025: Mascotas Interactivas, Ciencia y Manualidades",
@@ -899,7 +909,7 @@
         { "titulo": "Coche de Control Remoto Anfibio", "marca": "Lexibook", "rating": 4.7, "amazon": "https://www.amazon.es/dp/B09P9S9X1Z", "imagenAmazon": "https://m.media-amazon.com/images/I/61y-V3S8s6L.jpg", "descripcion": "Gira 360 grados y corre tanto por tierra como por agua." },
         { "titulo": "Máquina de Pegatinas Personalizadas", "marca": "Stationery Team", "rating": 4.6, "amazon": "https://www.amazon.es/dp/B0BVB87758", "imagenAmazon": "https://m.media-amazon.com/images/I/71v2R3O4WXL.jpg", "descripcion": "Convierte cualquier dibujo o foto en una pegatina brillante."} 
       ] 
-  }
+  }, 
     "tendencias_virales_y_educacion_stem": {
       "titulo": "Coleccionables de Moda, Robótica y Arte Creativo",
       "items": [
@@ -925,7 +935,7 @@
         { "titulo": "Microscopio de Bolsillo 60x-120x", "marca": "Carson MicroBrite", "rating": 4.9, "amazon": "https://www.amazon.es/dp/B00LAX52IQ", "imagenAmazon": "https://m.media-amazon.com/images/I/51Q2R3O4WXL.jpg", "descripcion": "Potente, ligero y con luz LED, ideal para excursiones al campo." }
      
       ] 
-}
+}, 
     "educacion_montessori_y_tecnologia_creativa": {
       "titulo": "Montessori, Robótica Hidráulica y Peluches Térmicos",
       "items": [
