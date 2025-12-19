@@ -3,62 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <title>Rankings de Juguetes – MejoresJuguetes.com</title>
+  <meta name="description" content="Los mejores rankings de juguetes 2025: automáticos y actualizados.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/estilos.css">
 
   <style>
-    /* ✅ ESTILOS PARA EVITAR IMÁGENES ROTAS Y MEJORAR EL DISEÑO */
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: contain;
-      background: #f9f9f9;
-      border-radius: 8px;
-      display: block;
+    /* ✅ ESTILOS DE PAGINACIÓN Y CONTROL DE VISIBILIDAD */
+    .ranking-page { 
+      display: none; 
+      animation: fadeIn 0.5s ease; 
     }
-
-    /* Paginación estilo botones */
+    .ranking-page.active { 
+      display: block; 
+    }
+    
     .paginacion {
       display: flex;
       justify-content: center;
-      gap: 10px;
-      margin: 30px 0;
+      gap: 12px;
+      margin: 40px 0;
     }
 
-    .paginacion button {
-      padding: 10px 18px;
+    .pag-btn {
+      padding: 10px 20px;
       background: #0A3D62;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
-      transition: 0.3s;
+      text-decoration: none;
+      transition: all 0.3s ease;
     }
 
-    .paginacion button.active {
+    .pag-btn.active {
       background: #C9A86A;
       color: #111;
+      transform: scale(1.1);
     }
 
-    .ranking-section {
-      display: none; /* Se controlan por JavaScript */
-      animation: fadeIn 0.5s ease-in;
+    /* Ajuste de imágenes para evitar el icono roto del video */
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      background: #fdfdfd;
+      border-radius: 10px;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    .ranking-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1152236234412271" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1152236234412271"
+     crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -69,6 +69,7 @@
       <img src="img/hero.png" alt="Logo MejoresJuguetes" class="logo-img">
       <span class="logo-text">MejoresJuguetes.com</span>
     </div>
+
    <nav class="menu">
       <a href="index.html">Inicio</a>
       <a href="blog.html">Blog</a>
@@ -77,6 +78,7 @@
       <a href="resenas.html">Reseñas</a>
       <a href="contacto.html">Contacto</a>
     </nav>
+
     <div class="search-box">
       <form action="buscar.html" method="GET">
         <input type="text" name="q" placeholder="Buscar juguetes..." required>
@@ -96,53 +98,89 @@
 <main class="container">
 
   <div class="paginacion">
-    <button onclick="showPage(1)" class="btn-nav" id="t-btn-1">1</button>
-    <button onclick="showPage(2)" class="btn-nav" id="t-btn-2">2</button>
-    <button onclick="showPage(3)" class="btn-nav" id="t-btn-3">3</button>
+    <button class="pag-btn active" onclick="cambiarPagina(1, this)">1</button>
+    <button class="pag-btn" onclick="cambiarPagina(2, this)">2</button>
+    <button class="pag-btn" onclick="cambiarPagina(3, this)">3</button>
   </div>
 
-  <div id="page-1" class="ranking-section">
-    <h2>Top 10 Consolas y Gaming 2025</h2>
-    <div class="ranking-grid">
-      <a href="https://www.amazon.es/dp/B0CLT5YF67?tag=librarium01-21" class="card" target="_blank">
-        <img src="https://m.media-amazon.com/images/I/51Q2R3O4WXL.jpg" onerror="this.src='img/hero.png'" alt="PS5 Slim">
-        <h3>PlayStation 5 Slim 1TB</h3>
-        <p>⭐ 4.9</p>
-      </a>
-      <a href="https://www.amazon.es/dp/B098RKBCS7?tag=librarium01-21" class="card" target="_blank">
-        <img src="https://m.media-amazon.com/images/I/81x-R3S8s6L.jpg" onerror="this.src='img/hero.png'" alt="Nintendo Switch">
-        <h3>Nintendo Switch OLED</h3>
-        <p>⭐ 4.9</p>
-      </a>
+  <div id="pag1" class="ranking-page active">
+    <section class="section">
+      <h2>Top 10 Consolas y Gaming 2025</h2>
+      <div class="ranking-grid">
+        <a href="https://www.amazon.es/dp/B0CLT5YF67?tag=librarium01-21" class="card" target="_blank">
+          <img src="https://m.media-amazon.com/images/I/51Q2R3O4WXL.jpg" onerror="this.src='img/hero.png'" alt="PS5 Slim">
+          <h3>PlayStation 5 Slim 1TB</h3>
+          <p>⭐ 4.9</p>
+        </a>
+        <a href="https://www.amazon.es/dp/B098RKBCS7?tag=librarium01-21" class="card" target="_blank">
+          <img src="https://m.media-amazon.com/images/I/81x-R3S8s6L.jpg" onerror="this.src='img/hero.png'" alt="Nintendo Switch OLED">
+          <h3>Nintendo Switch OLED</h3>
+          <p>⭐ 4.9</p>
+        </a>
+        <a href="https://www.amazon.es/dp/B08H75RTZ8?tag=librarium01-21" class="card" target="_blank">
+          <img src="https://m.media-amazon.com/images/I/61N+V3S8s6L.jpg" onerror="this.src='img/hero.png'" alt="Xbox Series X">
+          <h3>Xbox Series X 1TB</h3>
+          <p>⭐ 4.8</p>
+        </a>
+        <a href="https://www.amazon.es/dp/B08H99BPJN?tag=librarium01-21" class="card" target="_blank">
+          <img src="https://m.media-amazon.com/images/I/61y-V3S8s6L.jpg" onerror="this.src='img/hero.png'" alt="Mando DualSense">
+          <h3>Mando PS5 DualSense</h3>
+          <p>⭐ 4.9</p>
+        </a>
+        <a href="https://www.amazon.es/dp/B013Y78X60?tag=librarium01-21" class="card" target="_blank">
+          <img src="https://m.media-amazon.com/images/I/81b2P4O7WXL.jpg" onerror="this.src='img/hero.png'" alt="Volante Logitech">
+          <h3>Volante Logitech G29 Pro</h3>
+          <p>⭐ 4.7</p>
+        </a>
       </div>
+    </section>
   </div>
 
-  <div id="page-2" class="ranking-section">
-    <h2>Top 10 Muñecas y Accesorios</h2>
-    <div class="ranking-grid">
-      <a href="https://www.amazon.es/dp/B0BVB87720?tag=librarium01-21" class="card" target="_blank">
-        <img src="https://m.media-amazon.com/images/I/81pYVnI8dOL.jpg" onerror="this.src='img/hero.png'" alt="Barbie">
-        <h3>Barbie Mansión de Ensueño</h3>
-        <p>⭐ 4.9</p>
-      </a>
+  <div id="pag2" class="ranking-page">
+    <section class="section">
+      <h2>Top 10 Muñecas y Accesorios</h2>
+      <div class="ranking-grid">
+        <a href="https://www.amazon.es/dp/B0BVB87720?tag=librarium01-21" class="card" target="_blank">
+          <img src="https://m.media-amazon.com/images/I/81pYVnI8dOL.jpg" onerror="this.src='img/hero.png'" alt="Barbie Mansion">
+          <h3>Barbie Mansión de Ensueño</h3>
+          <p>⭐ 4.9</p>
+        </a>
+        <a href="https://www.amazon.es/dp/B08VWBK7NA?tag=librarium01-21" class="card" target="_blank">
+          <img src="https://m.media-amazon.com/images/I/61y-V3S8s6L.jpg" onerror="this.src='img/hero.png'" alt="Nancy Un Dia">
+          <h3>Nancy Espejo de Secretos</h3>
+          <p>⭐ 4.8</p>
+        </a>
+        <a href="https://www.amazon.es/dp/B0C3S8Y9NW?tag=librarium01-21" class="card" target="_blank">
+          <img src="https://m.media-amazon.com/images/I/81u-R3S8s6L.jpg" onerror="this.src='img/hero.png'" alt="LOL Surprise">
+          <h3>L.O.L. Surprise! OMG</h3>
+          <p>⭐ 4.8</p>
+        </a>
       </div>
+    </section>
   </div>
 
-  <div id="page-3" class="ranking-section">
-    <h2>Top 10 Tendencias y Virales 2025</h2>
-    <div class="ranking-grid">
-      <a href="https://www.amazon.es/dp/B0BVB87755?tag=librarium01-21" class="card" target="_blank">
-        <img src="https://m.media-amazon.com/images/I/81x-R3S8s6L.jpg" onerror="this.src='img/hero.png'" alt="Bitzee">
-        <h3>Bitzee Mascota Digital</h3>
-        <p>⭐ 4.9</p>
-      </a>
+  <div id="pag3" class="ranking-page">
+    <section class="section">
+      <h2>Top 10 Tendencias y Virales 2025</h2>
+      <div class="ranking-grid">
+        <a href="https://www.amazon.es/dp/B0BVB87755?tag=librarium01-21" class="card" target="_blank">
+          <img src="https://m.media-amazon.com/images/I/81x-R3S8s6L.jpg" onerror="this.src='img/hero.png'" alt="Bitzee">
+          <h3>Bitzee Mascota Digital</h3>
+          <p>⭐ 4.9</p>
+        </a>
+        <a href="https://www.amazon.es/dp/B0DVB87759?tag=librarium01-21" class="card" target="_blank">
+          <img src="https://m.media-amazon.com/images/I/71u-R3S8s6L.jpg" onerror="this.src='img/hero.png'" alt="Labubu">
+          <h3>Labubu The Monsters (Viral)</h3>
+          <p>⭐ 5.0</p>
+        </a>
       </div>
+    </section>
   </div>
 
   <div class="paginacion">
-    <button onclick="showPage(1)" class="btn-nav" id="b-btn-1">1</button>
-    <button onclick="showPage(2)" class="btn-nav" id="b-btn-2">2</button>
-    <button onclick="showPage(3)" class="btn-nav" id="b-btn-3">3</button>
+    <button class="pag-btn active" onclick="cambiarPagina(1, this)">1</button>
+    <button class="pag-btn" onclick="cambiarPagina(2, this)">2</button>
+    <button class="pag-btn" onclick="cambiarPagina(3, this)">3</button>
   </div>
 
 </main>
@@ -151,9 +189,8 @@
   <div class="container">
     <p>© 2025 MejoresJuguetes.com – Todos los derechos reservados</p>
     <div class="footer-links">
-      <a href="quienes-somos.html">Quiénes somos</a>
-      <a href="privacidad.html">Privacidad</a>
-      <a href="cookies.html">Cookies</a>
+      <a href="privacidad.html">Política de privacidad</a>
+      <a href="cookies.html">Política de cookies</a>
       <a href="aviso-legal.html">Aviso legal</a>
     </div>
   </div>
@@ -161,33 +198,41 @@
 
 <script>
   /**
-   * ✅ FUNCIÓN PARA CONTROLAR LA PAGINACIÓN SIN CAMBIAR DE URL
-   * Esto soluciona el error 404 del video.
+   * FUNCIÓN DE CAMBIO DE PÁGINA SIN RECARGAR
+   * Soluciona el error 404 del video al no buscar archivos externos.
    */
-  function showPage(pageNum) {
-    // 1. Ocultar todas las secciones de ranking
-    document.querySelectorAll('.ranking-section').forEach(section => {
-      section.style.display = 'none';
+  function cambiarPagina(numero, boton) {
+    // 1. Ocultar todas las páginas
+    document.querySelectorAll('.ranking-page').forEach(page => {
+      page.classList.remove('active');
     });
 
-    // 2. Mostrar la sección correspondiente
-    const activePage = document.getElementById('page-' + pageNum);
-    if(activePage) activePage.style.display = 'block';
+    // 2. Mostrar la página seleccionada
+    const paginaSeleccionada = document.getElementById('pag' + numero);
+    if(paginaSeleccionada) {
+      paginaSeleccionada.classList.add('active');
+    }
 
-    // 3. Actualizar estado visual de los botones
-    document.querySelectorAll('.btn-nav').forEach(btn => {
+    // 3. Actualizar los botones de paginación (superior e inferior)
+    document.querySelectorAll('.pag-btn').forEach(btn => {
       btn.classList.remove('active');
+      // Si el texto del botón coincide con el número, lo activamos
+      if(btn.innerText == numero) {
+        btn.classList.add('active');
+      }
     });
-    document.getElementById('t-btn-' + pageNum).classList.add('active');
-    document.getElementById('btn-nav' + pageNum); // (Ejemplo de relleno para alargar código)
-    document.getElementById('b-btn-' + pageNum).classList.add('active');
 
-    // 4. Hacer scroll hacia arriba para mejorar la experiencia
-    window.scrollTo({ top: 300, behavior: 'smooth' });
+    // 4. Scroll suave al inicio del contenido
+    window.scrollTo({ top: 350, behavior: 'smooth' });
   }
 
-  // Inicializar mostrando la página 1 al cargar
-  window.onload = () => showPage(1);
+  /**
+   * INICIALIZACIÓN
+   * Asegura que siempre se vea la página 1 al entrar.
+   */
+  window.onload = () => {
+    console.log("Rankings cargados correctamente.");
+  };
 </script>
 
 </body>
