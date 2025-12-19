@@ -3,45 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <title>Rankings de Juguetes – MejoresJuguetes.com</title>
+  <meta name="description" content="Descubre los mejores juguetes del año: educativos, STEM, Montessori, creativos y más. Rankings automáticos y actualizados.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/estilos.css">
 
   <style>
-    /* ✅ CONTROL DE VISIBILIDAD DE PÁGINAS */
-    .ranking-page { display: none; animation: fadeIn 0.5s ease; }
-    .ranking-page.active { display: block; }
+    /* ✅ SISTEMA DE PAGINACIÓN INTERNA */
+    .ranking-page { 
+      display: none; 
+      animation: fadeIn 0.5s ease-in-out; 
+    }
+    .ranking-page.active { 
+      display: block; 
+    }
     
     .paginacion {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 15px;
       margin: 40px 0;
     }
 
     .pag-btn {
-      padding: 12px 24px;
+      padding: 12px 25px;
       background: #0A3D62;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
+      font-size: 1.1rem;
       transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .pag-btn:hover {
+      background: #155e94;
+      transform: translateY(-2px);
     }
 
     .pag-btn.active {
       background: #C9A86A;
       color: #111;
       transform: scale(1.1);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
     }
 
+    /* Ajuste de imágenes para evitar cuadros vacíos */
     .card img {
       width: 100%;
-      height: 200px;
+      height: 220px;
       object-fit: contain;
-      background: #fff;
-      border-radius: 10px;
+      background: #ffffff;
+      border-bottom: 1px solid #eee;
+      padding: 10px;
     }
 
     @keyframes fadeIn {
@@ -49,6 +64,9 @@
       to { opacity: 1; }
     }
   </style>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1152236234412271"
+     crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -56,9 +74,10 @@
 <header class="header">
   <div class="container header-flex">
     <div class="logo-box">
-      <img src="img/hero.png" alt="Logo" class="logo-img">
+      <img src="img/hero.png" alt="Logo MejoresJuguetes" class="logo-img">
       <span class="logo-text">MejoresJuguetes.com</span>
     </div>
+
    <nav class="menu">
       <a href="index.html">Inicio</a>
       <a href="blog.html">Blog</a>
@@ -67,6 +86,7 @@
       <a href="resenas.html">Reseñas</a>
       <a href="contacto.html">Contacto</a>
     </nav>
+
     <div class="search-box">
       <form action="buscar.html" method="GET">
         <input type="text" name="q" placeholder="Buscar juguetes..." required>
@@ -79,7 +99,7 @@
 <section class="hero" style="background-image: url('img/hero.png');">
   <div class="container hero-overlay">
     <h2>Rankings de juguetes</h2>
-    <p>Los 30 mejores juguetes divididos por categorías interactivas.</p>
+    <p>Los juguetes más recomendados, valorados y vendidos del año 2025.</p>
   </div>
 </section>
 
@@ -256,13 +276,19 @@
 
 <script>
   function cambiarPagina(n) {
+    // Ocultar todas las páginas
     document.querySelectorAll('.ranking-page').forEach(p => p.classList.remove('active'));
+    // Mostrar solo la seleccionada
     document.getElementById('pag' + n).classList.add('active');
-    document.querySelectorAll('.pag-btn').forEach(b => {
-      b.classList.remove('active');
-      if(b.innerText == n) b.classList.add('active');
+    
+    // Sincronizar botones superiores e inferiores
+    document.querySelectorAll('.pag-btn').forEach(btn => {
+      btn.classList.remove('active');
+      if(btn.innerText == n) btn.classList.add('active');
     });
-    window.scrollTo({ top: 350, behavior: 'smooth' });
+
+    // Scroll suave al inicio del contenido
+    window.scrollTo({ top: 400, behavior: 'smooth' });
   }
 </script>
 
