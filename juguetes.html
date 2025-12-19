@@ -93,28 +93,35 @@
 </head>
 
 <body>
-<header class="header">
-  <div class="container header-flex">
-    <div class="logo-box">
-      <span class="logo-icon" aria-hidden="true">🧸</span>
-      <span class="logo-text">MejoresJuguetes.com</span>
+  <!-- ✅ HEADER UNIFICADO -->
+  <header class="header">
+    <div class="container header-flex">
+
+      <div class="logo-box">
+        <span class="logo-icon">🧸</span>
+        <span class="logo-text">MejoresJuguetes.com</span>
+      </div>
+
+      <nav class="menu">
+        <a href="index.html" class="active">Inicio</a>
+        <a href="blog.html">Blog</a>
+        <a href="juguetes.html">Juguetes</a>
+        <a href="rankings.html">Rankings</a>
+        <a href="resenas.html">Reseñas</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <!-- ✅ BUSCADOR SIEMPRE EN EL MISMO SITIO -->
+      <div class="search-box">
+        <form action="buscar.html" method="GET">
+          <input type="text" name="q" placeholder="Buscar juguetes..." required>
+          <button type="submit">🔍</button>
+        </form>
+      </div>
+
     </div>
-    <nav class="menu" aria-label="Menú principal">
-      index.htmlInicio</a>
-      blog.htmlBlog</a>
-      juguetes.htmlJuguetes</a>
-      rankings.htmlRankings</a>
-      resenas.htmlReseñas</a>
-      contacto.htmlContacto</a>
-    </nav>
-    <div class="search-box">
-      buscar.html
-        <input type="text" name="q" placeholder="Buscar juguetes..." required aria-label="Buscar juguetes">
-        <button type="submit" aria-label="Buscar">🔍</button>
-      </form>
-    </div>
-  </div>
-</header>
+  </header>
+  <!-- ✅ FIN HEADER -->
 
 <section class="hero" style="background-image: url('img/hero.png');">
   <div class="container" style="background: rgba(0,0,0,0.55); padding: 50px 30px; border-radius: 12px;">
