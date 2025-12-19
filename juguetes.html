@@ -1,22 +1,23 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Juguetes – MejoresJuguetes.com</title>
+  <title>Catálogo de Juguetes – MejoresJuguetes.com</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/estilos.css">
   <meta name="description" content="Catálogo completo de juguetes por edades, tipos, marcas y necesidades. Explora y salta directamente a Amazon con un clic.">
+  css/estilos.css
 
   <style>
-    /* ✅ Estilos de pestañas principales (igual que Rankings) */
-    .tabs {
+    /* ✅ Estilos optimizados */
+    .tabs, .subtabs {
       display: flex;
       gap: 12px;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       flex-wrap: wrap;
     }
 
-    .tab-btn {
+    .tab-btn, .subtab-btn {
       padding: 10px 18px;
       background: #0A3D62;
       color: #fff;
@@ -27,47 +28,16 @@
       font-weight: 600;
     }
 
-    .tab-btn:hover {
+    .tab-btn:hover, .subtab-btn:hover {
       background: #082f4a;
     }
 
-    .tab-btn.active {
+    .tab-btn.active, .subtab-btn.active {
       background: #C9A86A;
       color: #111;
       border-color: #b8955c;
     }
 
-    /* ✅ Subpestañas (mismo estilo, un pelín más pequeñas) */
-    .subtabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 15px;
-      flex-wrap: wrap;
-    }
-
-    .subtab-btn {
-      padding: 8px 14px;
-      background: #0A3D62;
-      color: #fff;
-      border-radius: 6px;
-      cursor: pointer;
-      border: 1px solid #082f4a;
-      transition: 0.2s ease;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    .subtab-btn:hover {
-      background: #082f4a;
-    }
-
-    .subtab-btn.active {
-      background: #C9A86A;
-      color: #111;
-      border-color: #b8955c;
-    }
-
-    /* ✅ Cards con marco bonito (coherente con el resto de la web) */
     .card {
       background: #fff;
       border-radius: 10px;
@@ -75,8 +45,8 @@
       border: 1px solid #e5e5e5;
       box-shadow: 0 2px 6px rgba(0,0,0,0.08);
       transition: 0.2s ease;
-      display: block;
       text-align: center;
+      display: block;
     }
 
     .card:hover {
@@ -92,17 +62,6 @@
       margin-bottom: 10px;
     }
 
-    .card h3 {
-      font-size: 1rem;
-      margin: 8px 0;
-    }
-
-    .card p {
-      font-size: 0.9rem;
-      margin: 3px 0;
-    }
-
-    /* ✅ Paginación (igual que Rankings) */
     .pagination {
       margin-top: 20px;
       display: flex;
@@ -134,110 +93,96 @@
 </head>
 
 <body>
-
-<!-- ✅ HEADER UNIFICADO -->
 <header class="header">
   <div class="container header-flex">
-
     <div class="logo-box">
-      <span class="logo-icon">🧸</span>
+      <span class="logo-icon" aria-hidden="true">🧸</span>
       <span class="logo-text">MejoresJuguetes.com</span>
     </div>
-
-    <nav class="menu">
-      <a href="index.html">Inicio</a>
-      <a href="blog.html">Blog</a>
-      <a href="juguetes.html" class="active">Juguetes</a>
-      <a href="rankings.html">Rankings</a>
-      <a href="resenas.html">Reseñas</a>
-      <a href="contacto.html">Contacto</a>
+    <nav class="menu" aria-label="Menú principal">
+      index.htmlInicio</a>
+      blog.htmlBlog</a>
+      juguetes.htmlJuguetes</a>
+      rankings.htmlRankings</a>
+      resenas.htmlReseñas</a>
+      contacto.htmlContacto</a>
     </nav>
-
     <div class="search-box">
-      <form action="buscar.html" method="GET">
-        <input type="text" name="q" placeholder="Buscar juguetes..." required>
-        <button type="submit">🔍</button>
+      buscar.html
+        <input type="text" name="q" placeholder="Buscar juguetes..." required aria-label="Buscar juguetes">
+        <button type="submit" aria-label="Buscar">🔍</button>
       </form>
     </div>
-
   </div>
 </header>
 
 <section class="hero" style="background-image: url('img/hero.png');">
   <div class="container" style="background: rgba(0,0,0,0.55); padding: 50px 30px; border-radius: 12px;">
-    <h2 style="color: #fff; font-size: 2.2rem;">Catálogo de Juguetes</h2>
+    <h1 style="color: #fff; font-size: 2.2rem;">Catálogo de Juguetes</h1>
     <p style="color: #ddd; font-size: 1.1rem;">Explora juguetes por edades, tipos, marcas y necesidades.</p>
   </div>
 </section>
 
 <main class="container">
-
-  <!-- ✅ PESTAÑAS PRINCIPALES (igual estilo que Rankings) -->
   <section class="section">
-    <div class="tabs">
-     <button class="tab-btn active" data-main="montessori">Montessori</button>
-     <button class="tab-btn" data-main="munecas">Muñecas</button>
-     <button class="tab-btn" data-main="puzzles">Puzzles</button>
-     <button class="tab-btn" data-main="general">General</button>
-     <button class="tab-btn" data-main="monsterflex">Monsterflex</button>
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" data-main="montessori">Montessori</button>
+      <button class="tab-btn" data-main="munecas">Muñecas</button>
+      <button class="tab-btn" data-main="puzzles">Puzzles</button>
+      <button class="tab-btn" data-main="general">General</button>
+      <button class="tab-btn" data-main="monsterflex">Monsterflex</button>
     </div>
   </section>
 
-  <!-- ✅ SUBPESTAÑAS (estilo similar) -->
   <section class="section">
     <div id="subtabs" class="subtabs"></div>
   </section>
 
-  <!-- ✅ RESULTADOS + PAGINACIÓN -->
   <section class="section">
     <div id="resultados" class="grid"></div>
-
     <div id="paginacion" class="pagination">
-      <button id="btnAnterior" disabled>← Anterior</button>
+      <button id="btnAnterior" disabled aria-label="Página anterior">← Anterior</button>
       <span id="infoPagina" style="font-size:0.9rem; color:#555;"></span>
-      <button id="btnSiguiente" disabled>Siguiente →</button>
+      <button id="btnSiguiente" disabled aria-label="Página siguiente">Siguiente →</button>
     </div>
   </section>
-
 </main>
 
 <footer class="footer">
   <div class="container">
     <p>© 2025 MejoresJuguetes.com – Todos los derechos reservados</p>
     <div class="footer-links">
-      <a href="quienes-somos.html">Quiénes somos</a>
-      <a href="privacidad.html">Política de privacidad</a>
-      <a href="cookies.html">Política de cookies</a>
-      <a href="aviso-legal.html">Aviso legal</a>
+      quienes-somos.htmlQuiénes somos</a>
+      privacidad.htmlPolítica de privacidad</a>
+      cookies.htmlPolítica de cookies</a>
+      aviso-legal.htmlAviso legal</a>
     </div>
   </div>
 </footer>
+
 <script>
   let juguetesData = {};
-
-  async function cargarJuguetes() {
-    const res = await fetch("juguetes.json");
-    juguetesData = await res.json();
-  }
-
-  /* ✅ CONFIGURACIÓN */
   const AFFILIATE_TAG = "mejoresjuguetes-21";
   const MAX_RESULTS = 12;
-
   let paginaActual = 0;
   let categoriaActual = "";
   let subcategoriaActual = "";
-
-  /* ⭐ SUBTABS GENERADOS AUTOMÁTICAMENTE DESDE juguetes.json */
   let SUBTABS = {};
 
-  /* Genera pestañas y subpestañas según las categorías reales del JSON */
+  async function cargarJuguetes() {
+    try {
+      const res = await fetch("juguetes.json");
+      if (!res.ok) throw new Error("Error al cargar datos");
+      juguetesData = await res.json();
+    } catch (error) {
+      document.getElementById("resultados").innerHTML = "<p>Error al cargar juguetes.</p>";
+    }
+  }
+
   function generarSubtabsDesdeJSON() {
     SUBTABS = {};
-
     Object.keys(juguetesData).forEach(categoria => {
       SUBTABS[categoria] = {};
-
       Object.keys(juguetesData[categoria]).forEach(id => {
         const titulo = juguetesData[categoria][id].titulo || id;
         SUBTABS[categoria][id] = titulo;
@@ -245,47 +190,38 @@
     });
   }
 
-  /* ✅ UTILIDADES */
   function generarEstrellas(rating) {
-    const r = Number(rating) || 0;
+    const r = Math.min(5, Number(rating) || 0);
     return "⭐".repeat(Math.round(r)) + ` (${r}/5)`;
   }
 
   function ratingAlternativo(titulo) {
     let seed = 0;
     for (let i = 0; i < titulo.length; i++) seed += titulo.charCodeAt(i);
-    return (3.5 + (seed % 13) / 10).toFixed(1);
-  }
-async function buscarJuguetes(categoria, subcategoria) {
-  const categoriaObj = juguetesData[categoria];
-  if (!categoriaObj) {
-    return { items: [], total: 0 };
+    return Math.min(5, (3.5 + (seed % 13) / 10)).toFixed(1);
   }
 
-  // Si NO hay subcategoría → devolver todos los juguetes de la categoría
-  if (!subcategoria) {
-    const items = Object.values(categoriaObj);
-    return { items, total: items.length };
+  async function buscarJuguetes(categoria, subcategoria) {
+    const categoriaObj = juguetesData[categoria];
+    if (!categoriaObj) return { items: [], total: 0 };
+    if (!subcategoria) {
+      const items = Object.values(categoriaObj);
+      return { items, total: items.length };
+    }
+    const item = categoriaObj[subcategoria];
+    return item ? { items: [item], total: 1 } : { items: [], total: 0 };
   }
 
-  // Si hay subcategoría → devolver solo ese juguete
-  const item = categoriaObj[subcategoria];
-  if (!item) {
-    return { items: [], total: 0 };
-  }
-
-  return { items: [item], total: 1 };
-}
   function card(item) {
     const titulo = item.titulo || "Juguete sin nombre";
     const marca = item.marca || "Marca desconocida";
     const rating = item.rating || ratingAlternativo(titulo);
     const imagen = item.imagenAmazon || "img/juguete-default.png";
-    const enlace = item.amazon + `?tag=${AFFILIATE_TAG}`;
+    const enlace = item.amazon ? `${item.amazon}?tag=${AFFILIATE_TAG}` : "#";
 
     return `
-      <a href="${enlace}" class="card" target="_blank">
-        <img src="${imagen}" alt="${titulo}">
+      ${enlace}
+        ${imagen}
         <h3>${titulo}</h3>
         <p><strong>${marca}</strong></p>
         <p>${generarEstrellas(rating)}</p>
@@ -293,75 +229,56 @@ async function buscarJuguetes(categoria, subcategoria) {
     `;
   }
 
-  /* ✅ CARGAR SUBPESTAÑAS DESDE SUBTABS GENERADO */
   function cargarSubtabs() {
     const cont = document.getElementById("subtabs");
     cont.innerHTML = "";
-
     const subtabs = SUBTABS[categoriaActual];
     if (!subtabs) return;
-
     const keys = Object.keys(subtabs);
-
     keys.forEach((id, index) => {
-      const titulo = subtabs[id];
       cont.innerHTML += `
         <button class="subtab-btn ${index === 0 ? "active" : ""}" data-sub="${id}">
-          ${titulo}
+          ${subtabs[id]}
         </button>
       `;
     });
-
     subcategoriaActual = keys[0];
   }
 
-  /* ✅ CARGAR RESULTADOS CON PAGINACIÓN REAL */
   async function cargarCategoria() {
     const { items, total } = await buscarJuguetes(categoriaActual, subcategoriaActual);
-
     const inicio = paginaActual * MAX_RESULTS;
     const fin = inicio + MAX_RESULTS;
     const paginaItems = items.slice(inicio, fin);
-
     document.getElementById("resultados").innerHTML = paginaItems.map(card).join("");
-
     const totalPaginas = Math.max(1, Math.ceil(total / MAX_RESULTS));
-
-    document.getElementById("infoPagina").textContent =
-      `Página ${paginaActual + 1} de ${totalPaginas}`;
-
+    document.getElementById("infoPagina").textContent = `Página ${paginaActual + 1} de ${totalPaginas}`;
     document.getElementById("btnAnterior").disabled = paginaActual === 0;
     document.getElementById("btnSiguiente").disabled = paginaActual >= totalPaginas - 1;
+    document.getElementById("paginacion").style.display = total > MAX_RESULTS ? "flex" : "none";
   }
 
-  /* ✅ EVENTOS: PESTAÑAS PRINCIPALES */
   document.querySelectorAll(".tab-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
-
       categoriaActual = btn.dataset.main;
       paginaActual = 0;
-
       cargarSubtabs();
       cargarCategoria();
     });
   });
 
-  /* ✅ EVENTOS: SUBPESTAÑAS */
   document.getElementById("subtabs").addEventListener("click", e => {
     if (e.target.classList.contains("subtab-btn")) {
       document.querySelectorAll(".subtab-btn").forEach(b => b.classList.remove("active"));
       e.target.classList.add("active");
-
       subcategoriaActual = e.target.dataset.sub;
       paginaActual = 0;
-
       cargarCategoria();
     }
   });
 
-  /* ✅ PAGINACIÓN */
   document.getElementById("btnAnterior").addEventListener("click", () => {
     if (paginaActual > 0) {
       paginaActual--;
@@ -374,7 +291,6 @@ async function buscarJuguetes(categoria, subcategoria) {
     cargarCategoria();
   });
 
-  /* ✅ CARGA INICIAL */
   (async () => {
     await cargarJuguetes();
     generarSubtabsDesdeJSON();
@@ -385,3 +301,5 @@ async function buscarJuguetes(categoria, subcategoria) {
 </script>
 </body>
 </html>
+
+
