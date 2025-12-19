@@ -4,11 +4,10 @@
   <meta charset="UTF-8">
   <title>Catálogo de Juguetes – MejoresJuguetes.com</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Catálogo completo de juguetes por edades, tipos, marcas y necesidades. Explora y salta directamente a Amazon con un clic.">
   <link rel="stylesheet" href="css/estilos.css">
-
+  
   <style>
-    /* ✅ Estilos adicionales específicos para la funcionalidad de pestañas */
+    /* ✅ ESTILOS PARA LAS PESTAÑAS */
     .tabs, .subtabs {
       display: flex;
       gap: 12px;
@@ -19,7 +18,7 @@
 
     .tab-btn, .subtab-btn {
       padding: 10px 18px;
-      background: #0A3D62; /* Azul oscuro del ranking */
+      background: #0A3D62;
       color: #fff;
       border-radius: 8px;
       cursor: pointer;
@@ -28,17 +27,13 @@
       font-weight: 600;
     }
 
-    .tab-btn:hover, .subtab-btn:hover {
-      background: #082f4a;
-    }
-
     .tab-btn.active, .subtab-btn.active {
-      background: #C9A86A; /* Dorado del ranking */
+      background: #C9A86A;
       color: #111;
       border-color: #b8955c;
     }
 
-    /* Grid de resultados para que coincida con ranking-grid */
+    /* ✅ GRID DE JUGUETES (CARGA MASIVA) */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -46,6 +41,34 @@
       margin-top: 30px;
     }
 
+    /* ✅ ESTILO DE LA TARJETA (Igual a Rankings) */
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      border: 1px solid #e5e5e5;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: 0.2s ease;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    /* ✅ PAGINACIÓN */
     .pagination {
       margin-top: 30px;
       display: flex;
@@ -56,7 +79,7 @@
     }
 
     .pagination button {
-      padding: 8px 14px;
+      padding: 10px 20px;
       border-radius: 6px;
       border: none;
       background: #0A3D62;
@@ -101,14 +124,14 @@
 
 <section class="hero" style="background-image: url('img/hero.png');">
   <div class="container hero-overlay">
-    <h1>Catálogo de Juguetes</h1>
-    <p>Explora juguetes por edades, tipos, marcas y necesidades.</p>
+    <h2>Catálogo de Juguetes</h2>
+    <p>Explora más de 40 opciones por categoría con los mejores precios.</p>
   </div>
 </section>
 
 <main class="container">
 
-  <section class="section" style="margin-top: 30px;">
+  <section class="section" style="margin-top: 20px;">
     <div class="tabs" role="tablist">
       <button class="tab-btn active" data-main="montessori">Montessori</button>
       <button class="tab-btn" data-main="munecas">Muñecas</button>
@@ -148,129 +171,143 @@
 </footer>
 
 <script>
-  // Tu lógica de JavaScript se mantiene intacta pero corregimos la función 'card' 
-  // para que use la misma estructura visual que en Rankings.
+  // --- CONFIGURACIÓN Y VARIABLES ---
   let juguetesData = {};
   const AFFILIATE_TAG = "mejoresjuguetes-21";
-  const MAX_RESULTS = 12;
+  const MAX_RESULTS = 40; // CARGA MASIVA SOLICITADA
+  const FOTO_DEFECTO = "img/hero.png"; // IMAGEN SI FALLA AMAZON
+  
   let paginaActual = 0;
-  let categoriaActual = "";
+  let categoriaActual = "montessori";
   let subcategoriaActual = "";
   let SUBTABS = {};
 
-  async function cargarJuguetes() {
+  // --- CARGA DE DATOS ---
+  async function iniciarCatálogo() {
     try {
-      const res = await fetch("juguetes.json");
-      if (!res.ok) throw new Error("Error al cargar datos");
-      juguetesData = await res.json();
-      generarSubtabsDesdeJSON();
-      categoriaActual = Object.keys(SUBTABS)[0];
-      cargarSubtabs();
-      cargarCategoria();
+      const respuesta = await fetch("juguetes.json");
+      if (!respuesta.ok) throw new Error("No se pudo cargar el JSON");
+      juguetesData = await respuesta.json();
+      
+      generarEstructuraSubtabs();
+      categoriaActual = Object.keys(SUBTABS)[0] || "montessori";
+      
+      cargarBotonesSubtabs();
+      mostrarJuguetes();
     } catch (error) {
-      document.getElementById("resultados").innerHTML = "<p>Error al cargar juguetes. Asegúrate de tener el archivo juguetes.json</p>";
+      console.error("Error:", error);
+      document.getElementById("resultados").innerHTML = "<h3>Error al cargar los juguetes.</h3>";
     }
   }
 
-  function generarSubtabsDesdeJSON() {
+  // --- LÓGICA DE SUBTABS ---
+  function generarEstructuraSubtabs() {
     SUBTABS = {};
-    Object.keys(juguetesData).forEach(categoria => {
-      SUBTABS[categoria] = {};
-      Object.keys(juguetesData[categoria]).forEach(id => {
-        const titulo = juguetesData[categoria][id].titulo || "Producto";
-        SUBTABS[categoria][id] = titulo;
-      });
-    });
+    for (const cat in juguetesData) {
+      SUBTABS[cat] = {};
+      for (const subId in juguetesData[cat]) {
+        SUBTABS[cat][subId] = juguetesData[cat][subId].titulo || subId;
+      }
+    }
   }
 
-  function card(item) {
-    const titulo = item.titulo || "Juguete";
-    const rating = item.rating || "4.5";
-    const imagen = item.imagenAmazon || "img/hero.png";
-    const enlace = item.amazon ? `${item.amazon}?tag=${AFFILIATE_TAG}` : "#";
+  function cargarBotonesSubtabs() {
+    const contenedor = document.getElementById("subtabs");
+    contenedor.innerHTML = "";
+    
+    const subcategorias = SUBTABS[categoriaActual];
+    if (!subcategorias) return;
 
-    // Usamos la misma estructura de clase "card" que tienes en el CSS de Rankings
+    const ids = Object.keys(subcategorias);
+    ids.forEach((id, index) => {
+      const boton = document.createElement("button");
+      boton.className = `subtab-btn ${index === 0 ? "active" : ""}`;
+      boton.textContent = subcategorias[id];
+      boton.onclick = () => {
+        document.querySelectorAll(".subtab-btn").forEach(b => b.classList.remove("active"));
+        boton.classList.add("active");
+        subcategoriaActual = id;
+        paginaActual = 0;
+        mostrarJuguetes();
+      };
+      contenedor.appendChild(boton);
+    });
+    subcategoriaActual = ids[0];
+  }
+
+  // --- LÓGICA DE RATING ---
+  function obtenerEstrellas(rating) {
+    const num = Math.min(5, Number(rating) || 0);
+    return "⭐".repeat(Math.round(num)) + ` (${num}/5)`;
+  }
+
+  // --- RENDERIZADO DE TARJETAS ---
+  function crearTarjeta(item, idSub) {
+    // Si el item es un objeto que contiene una lista 'items', la procesamos. 
+    // Si es un juguete individual, lo procesamos directamente.
+    const titulo = item.titulo || "Juguete";
+    const img = item.imagenAmazon || FOTO_DEFECTO;
+    const rating = item.rating || "4.5";
+
     return `
-      <a href="${enlace}" class="card" target="_blank">
-        <img src="${imagen}" alt="${titulo}">
+      <a href="juguete.html?cat=${categoriaActual}&id=${idSub}" class="card">
+        <img src="${img}" onerror="this.src='${FOTO_DEFECTO}'" alt="${titulo}">
         <h3>${titulo}</h3>
-        <p>⭐ ${rating}</p>
+        <p>${obtenerEstrellas(rating)}</p>
       </a>
     `;
   }
 
-  function cargarSubtabs() {
-    const cont = document.getElementById("subtabs");
-    cont.innerHTML = "";
-    const subtabs = SUBTABS[categoriaActual];
-    if (!subtabs) return;
-    const keys = Object.keys(subtabs);
-    keys.forEach((id, index) => {
-      cont.innerHTML += `
-        <button class="subtab-btn ${index === 0 ? "active" : ""}" data-sub="${id}">
-          ${subtabs[id]}
-        </button>
-      `;
-    });
-    subcategoriaActual = keys[0];
-  }
+  async function mostrarJuguetes() {
+    const contenedor = document.getElementById("resultados");
+    contenedor.innerHTML = "";
+    
+    const catData = juguetesData[categoriaActual];
+    if (!catData || !catData[subcategoriaActual]) return;
 
-  async function cargarCategoria() {
-    const categoriaObj = juguetesData[categoriaActual];
-    if (!categoriaObj) return;
-
-    let items = [];
-    if (!subcategoriaActual) {
-      items = Object.values(categoriaObj);
+    const subData = catData[subcategoriaActual];
+    
+    // Manejo de si tienes una lista de items dentro de la subcategoría o solo uno
+    let todosLosItems = [];
+    if (subData.items && Array.isArray(subData.items)) {
+      todosLosItems = subData.items;
     } else {
-      items = categoriaObj[subcategoriaActual] ? [categoriaObj[subcategoriaActual]] : [];
+      todosLosItems = [subData];
     }
 
     const inicio = paginaActual * MAX_RESULTS;
     const fin = inicio + MAX_RESULTS;
-    const paginaItems = items.slice(inicio, fin);
-    
-    document.getElementById("resultados").innerHTML = paginaItems.map(card).join("");
-    
-    const totalPaginas = Math.max(1, Math.ceil(items.length / MAX_RESULTS));
+    const segmentado = todosLosItems.slice(inicio, fin);
+
+    contenedor.innerHTML = segmentado.map(item => crearTarjeta(item, subcategoriaActual)).join("");
+
+    // Paginación
+    const totalPaginas = Math.ceil(todosLosItems.length / MAX_RESULTS) || 1;
     document.getElementById("infoPagina").textContent = `Página ${paginaActual + 1} de ${totalPaginas}`;
     document.getElementById("btnAnterior").disabled = paginaActual === 0;
     document.getElementById("btnSiguiente").disabled = paginaActual >= totalPaginas - 1;
-    document.getElementById("paginacion").style.display = items.length > MAX_RESULTS ? "flex" : "none";
+    document.getElementById("paginacion").style.display = todosLosItems.length > MAX_RESULTS ? "flex" : "none";
   }
 
-  // Listeners
+  // --- EVENTOS DE CATEGORÍA ---
   document.querySelectorAll(".tab-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       categoriaActual = btn.dataset.main;
       paginaActual = 0;
-      cargarSubtabs();
-      cargarCategoria();
+      cargarBotonesSubtabs();
+      mostrarJuguetes();
     });
   });
 
-  document.getElementById("subtabs").addEventListener("click", e => {
-    if (e.target.classList.contains("subtab-btn")) {
-      document.querySelectorAll(".subtab-btn").forEach(b => b.classList.remove("active"));
-      e.target.classList.add("active");
-      subcategoriaActual = e.target.dataset.sub;
-      paginaActual = 0;
-      cargarCategoria();
-    }
-  });
+  document.getElementById("btnAnterior").onclick = () => { if(paginaActual > 0) { paginaActual--; mostrarJuguetes(); }};
+  document.getElementById("btnSiguiente").onclick = () => { paginaActual++; mostrarJuguetes(); };
 
-  document.getElementById("btnAnterior").addEventListener("click", () => {
-    if (paginaActual > 0) { paginaActual--; cargarCategoria(); }
-  });
-
-  document.getElementById("btnSiguiente").addEventListener("click", () => {
-    paginaActual++; cargarCategoria();
-  });
-
-  cargarJuguetes();
+  // --- INICIO ---
+  iniciarCatálogo();
 </script>
+
 </body>
 </html>
 
