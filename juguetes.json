@@ -4,7 +4,7 @@
       "titulo": "Material Montessori de Madera",
       "items": [
         { "titulo": "Arcoíris Madera 12 piezas XL", "marca": "Grimm Style", "rating": 4.9, "amazon": "https://www.amazon.es/dp/B004567890", "imagenAmazon": "https://m.media-amazon.com/images/I/61mO6O2L.jpg", "descripcion": "Clásico para construcción libre y equilibrio." },
-        { "titulo": "Caja de Permanencia Pro", "marca": "Montessori Lab", "rating": 4.8, "amazon": "https://www.amazon.es/dp/B08G8Y5T6L", "imagenAmazon": "https://m.media-amazon.com/images/I/61-z0MvGkOL.jpg", "descripcion": "Desarrolla la comprensión de la permanencia de objetos." }
+        { "titulo": "Caja de Permanencia Pro", "marca": "Montessori Lab", "rating": 4.8, "amazon": "https://www.amazon.es/dp/B08G8Y5T6L", "imagenAmazon": "https://m.media-amazon.com/images/I/61-z0MvGkOL.jpg", "descripcion": "Desarrolla la comprensión de la permanencia de objetos." },
         { "titulo": "Arcoíris Madera 12 piezas XL", "marca": "Grimm Style", "rating": 4.9, "amazon": "https://www.amazon.es/dp/B004567890", "imagenAmazon": "https://m.media-amazon.com/images/I/61mO6O2L.jpg", "descripcion": "Clásico para construcción libre y equilibrio." },
         { "titulo": "Caja de Permanencia Pro", "marca": "Montessori Lab", "rating": 4.8, "amazon": "https://www.amazon.es/dp/B08G8Y5T6L", "imagenAmazon": "https://m.media-amazon.com/images/I/61-z0MvGkOL.jpg", "descripcion": "Desarrolla la comprensión de la permanencia de objetos." },
         { "titulo": "Torre Rosa de Precisión", "marca": "Nienhuis", "rating": 4.9, "amazon": "https://www.amazon.es/dp/B001234567", "imagenAmazon": "https://m.media-amazon.com/images/I/51wX1S.jpg", "descripcion": "10 cubos de madera para entender dimensiones." },
@@ -20,7 +20,7 @@
         { "titulo": "Torre de Aprendizaje Blanca", "marca": "Ully", "rating": 4.9, "amazon": "https://www.amazon.es/dp/B07K225G2V", "imagenAmazon": "https://m.media-amazon.com/images/I/71R2o5-4YBL.jpg", "descripcion": "Fomenta la participación en tareas domésticas." },
         { "titulo": "Balanza de Madera Montessori", "marca": "Goula", "rating": 4.6, "amazon": "https://www.amazon.es/dp/B00466K9QC", "imagenAmazon": "https://m.media-amazon.com/images/I/61N+V3S8s6L.jpg", "descripcion": "Introducción al concepto de peso y equilibrio." },
         { "titulo": "Juego de Pesca Magnética", "marca": "Top Bright", "rating": 4.8, "amazon": "https://www.amazon.es/dp/B07H8GQZ7R", "imagenAmazon": "https://m.media-amazon.com/images/I/81pYVnI8dOL.jpg", "descripcion": "Coordinación ojo-mano y clasificación de colores." },
-  { "titulo": "Set de Limpieza Madera 6 piezas", "marca": "Melissa & Doug", "rating": 4.9, "amazon": "https://www.amazon.es/dp/B00FZMBS66", "imagenAmazon": "https://m.media-amazon.com/images/I/81-R3S8s6L.jpg", "descripcion": "Escoba, fregona y plumero de tamaño real para niños." },
+        { "titulo": "Set de Limpieza Madera 6 piezas", "marca": "Melissa & Doug", "rating": 4.9, "amazon": "https://www.amazon.es/dp/B00FZMBS66", "imagenAmazon": "https://m.media-amazon.com/images/I/81-R3S8s6L.jpg", "descripcion": "Escoba, fregona y plumero de tamaño real para niños." },
         { "titulo": "Botellas Sensoriales Sound", "marca": "Petit Boum", "rating": 4.8, "amazon": "https://www.amazon.es/dp/B08P9N2T5G", "imagenAmazon": "https://m.media-amazon.com/images/I/71v2R3O4WXL.jpg", "descripcion": "Estimulación auditiva y visual con elementos naturales." },
         { "titulo": "Cilindros de Sonido Emparejables", "marca": "Classic World", "rating": 4.7, "amazon": "https://www.amazon.es/dp/B07G3Z9V3Y", "imagenAmazon": "https://m.media-amazon.com/images/I/61z+V3S8s6L.jpg", "descripcion": "12 botes para emparejar sonidos idénticos." },
         { "titulo": "Caja de Telas para Tacto", "marca": "MontiSenses", "rating": 4.6, "amazon": "https://www.amazon.es/dp/B00S9Y5K3Y", "imagenAmazon": "https://m.media-amazon.com/images/I/61x-R3S8s6L.jpg", "descripcion": "Diferentes texturas (seda, algodón, lana) para el sentido táctico." },
@@ -40,7 +40,6 @@
         { "titulo": "Pizarra Magnética Números", "marca": "PlayMonster", "rating": 4.7, "amazon": "https://www.amazon.es/dp/B0025YV3S6", "imagenAmazon": "https://m.media-amazon.com/images/I/81x-R3S8s6L.jpg", "descripcion": "Guía el trazo con un lápiz magnético." },
         { "titulo": "Bloques de Corcho Ecológicos", "marca": "Korko", "rating": 4.9, "amazon": "https://www.amazon.es/dp/B08XWN4L9Q", "imagenAmazon": "https://m.media-amazon.com/images/I/71z+V3S8s6L.jpg", "descripcion": "Material silencioso y natural para construcción." },
         { "titulo": "Tablas de Suma y Resta", "marca": "MontiMath", "rating": 4.8, "amazon": "https://www.amazon.es/dp/B07V6X7K8Y", "imagenAmazon": "https://m.media-amazon.com/images/I/71x-R3S8s6L.jpg", "descripcion": "Herramienta visual para operaciones básicas." }
-
       ]
     }
   },
