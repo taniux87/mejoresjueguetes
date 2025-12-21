@@ -21,7 +21,8 @@
 { "titulo": "Balanza de Madera con Pesas", "marca": "Goula", "rating": 4.5, "amazon": "https://www.amazon.es/dp/B00466K9QC", "imagenAmazon": "https://m.media-amazon.com/images/I/61N+V3S8s6L.jpg", "descripcion": "Material para experimentar con el concepto de peso, equilibrio y medida." },
 { "titulo": "Bastidores de Vestir (Set 6 piezas)", "marca": "Tandem", "rating": 4.4, "amazon": "https://www.amazon.es/dp/B0006PKZ1I", "imagenAmazon": "https://m.media-amazon.com/images/I/81kO7t+EACL.jpg", "descripcion": "Práctica de autonomía personal: botones, cremalleras, lazos y corchetes." },
 { "titulo": "Geoplano de Madera con Gomas", "marca": "Melissa & Doug", "rating": 4.8, "amazon": "https://www.amazon.es/dp/B00000IZQP", "imagenAmazon": "https://m.media-amazon.com/images/I/81x-R3S8s6L.jpg", "descripcion": "Tablero de clavijas para crear formas geométricas y entender perímetros." }
-        }
+       ]
+    }
   },
   "munecas": {
     "grandes_marcas": {
