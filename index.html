@@ -58,7 +58,7 @@
 
     <!-- ✅ SECCIÓN: Novedades -->
     <section class="section">
-      <h2>Novedades del mes</h2>
+      <h2>Lecturas recomendadas para padres (Crianza y Desarrollo)</h2>
       <div id="novedades" class="grid"></div>
     </section>
 
@@ -67,11 +67,10 @@
       <h2>Explora juguetes por tipo</h2>
       <p>Encuentra el juguete ideal según la etapa de desarrollo de tu hijo. Analizamos los juguetes más recomendados para estimular habilidades motoras, cognitivas y emocionales.</p>
       <ul>
-        <li><a href="rankings.html?tipo=montessori">Juguetes Montessori</a></li>
-        <li><a href="rankings.html?tipo=creatividad">Juguetes creativos</a></li>
-        <li><a href="rankings.html?tipo=educativos">Juguetes educativos</a></li>
-        <li><a href="rankings.html?tipo=exterior">Juguetes de exterior</a></li>
-      </ul>
+  <li><a href="rankings.html">Juguetes Montessori y Consolas (Página 1)</a></li>
+  <li><a href="rankings.html">Muñecas y Accesorios (Página 2)</a></li>
+  <li><a href="rankings.html">Tendencias y TOP Juguetes (Página 3)</a></li>
+</ul>
     </section>
 
     <section class="bloque-seo">
@@ -225,7 +224,8 @@
     </div>
   </footer>
 
-  <!-- ✅ SCRIPTS (MANTENIDOS, SOLO AJUSTADO EL ENLACE A juguete.html) -->
+<script>
+    /* ✅ Estrellas */
   <script>
     /* ✅ Estrellas */
     function generarEstrellas(rating) {
@@ -257,16 +257,13 @@
       if (isbnOL) {
         return `https://covers.openlibrary.org/b/isbn/${isbnOL}-L.jpg`;
       }
-
       if (info.imageLinks?.thumbnail) {
         return info.imageLinks.thumbnail.replace(/^http:\/\//i, "https://");
       }
-
       const isbn = obtenerISBN(info);
       if (isbn) {
         return `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`;
       }
-
       return "img/portada-default.png";
     }
 
@@ -300,18 +297,20 @@
       }));
     }
 
-    /* ✅ Crear tarjeta */
+    /* ✅ Crear tarjeta (CORREGIDA PARA AMAZON REFERIDO) */
     function crearCard(item) {
       const info = item.volumeInfo || {};
-      const id = item.id;
       const titulo = info.title || "Título no disponible";
       const autor = info.authors ? info.authors.join(", ") : "Autor desconocido";
-      const descripcion = info.description ? info.description.substring(0, 120) + "..." : "Sin resumen disponible.";
+      const descripcion = info.description ? info.description.substring(0, 100) + "..." : "Haz clic para ver más detalles en Amazon.";
       const rating = info.averageRating || ratingAlternativo(titulo);
       const portada = portadaLibro(info, item.isbnOL);
+      
+      // ✅ Enlace directo a búsqueda en Amazon con tu ID de afiliado
+      const linkAmazon = `https://www.amazon.es/s?k=${encodeURIComponent(titulo)}+libro&tag=librarium21-21`;
 
       return `
-        <a href="juguete.html?id=${id}" class="card">
+        <a href="${linkAmazon}" class="card" target="_blank">
           <img src="${portada}" alt="Portada libro">
           <h3>${titulo}</h3>
           <p><strong>${autor}</strong></p>
@@ -321,9 +320,10 @@
       `;
     }
 
-    /* ✅ Cargar novedades */
+    /* ✅ Cargar novedades (CORREGIDA LA BÚSQUEDA) */
     async function cargarNovedades() {
-      const libros = await buscarLibros("libros para padres sobre crianza", 4);
+      // ✅ Buscamos específicamente libros para padres sobre crianza
+      const libros = await buscarLibros("mejores libros crianza positiva padres e hijos", 4);
       const cont = document.getElementById("novedades");
       cont.innerHTML = "";
       libros.forEach(item => cont.innerHTML += crearCard(item));
@@ -331,6 +331,5 @@
 
     cargarNovedades();
   </script>
-
 </body>
 </html>
