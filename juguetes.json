@@ -1,7 +1,7 @@
 {
   "montessori": {
-    "material_madera": {
-      "titulo": "Material Montessori de Madera",
+    "material_edad": {
+      "titulo": "Material Montessori por Edad",
       "items": [
         { 
           "titulo": "Material Montessori 1 año",
