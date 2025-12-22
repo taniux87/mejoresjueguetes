@@ -125,6 +125,14 @@
           "amazon": "https://www.amazon.es/s?k=monsterfelx&__mk_es_ES=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=R4ZQRFZBJLZS&sprefix=monsterfelx%2Caps%2C261&ref=nb_sb_noss_1",
           "imagenAmazon": "https://m.media-amazon.com/images/I/714Lz+f8ZHL._AC_UL640_FMwebp_QL65_.jpg",
           "descripcion": "Las mejores monster flex."
+        },
+         { 
+          "titulo": "goo jit zu",
+          "marca": "Bandai",
+          "rating": 4.8,
+          "amazon": "https://www.amazon.es/s?k=goo+jit+zu&crid=29RSU2971AQUI&sprefix=goo%2Caps%2C271&ref=nb_sb_ss_mvt-t11-ranker_2_3",
+          "imagenAmazon": "https://m.media-amazon.com/images/I/61sVF6G7J1L._AC_UL640_FMwebp_QL65_.jpg",
+          "descripcion": "Las mejores goo jit zu."
         }
       ] 
     }
