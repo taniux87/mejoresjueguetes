@@ -159,8 +159,23 @@
     "grandes_marcas": {
       "titulo": "Muñecas y Accesorios 2025",
       "items": [
-        { "titulo": "Barbie Dreamhouse 2025 con Ascensor", "marca": "Mattel", "rating": 4.9, "amazon": "https://www.amazon.es/dp/B0CLT5S363", "imagenAmazon": "https://m.media-amazon.com/images/I/81R+V3S8s6L.jpg", "descripcion": "La mansión definitiva con luces y sonidos." },
-        { "titulo": "Nancy Un Día haciendo Surf", "marca": "Famosa", "rating": 4.8, "amazon": "https://www.amazon.es/dp/B08VWBK7N6", "imagenAmazon": "https://m.media-amazon.com/images/I/81x-R3S8s6L.jpg", "descripcion": "Incluye tabla de surf y look californiano." }
+         { "titulo": "Barbie Dreamhouse 2025 con Ascensor",
+          "marca": "Mattel", 
+          "rating": 4.9, "amazon": "https://www.amazon.es/dp/B0CLT5S363", 
+          "imagenAmazon": "https://m.media-amazon.com/images/I/81R+V3S8s6L.jpg", 
+          "descripcion": "La mansión definitiva con luces y sonidos."
+        },
+         { "titulo": "Nancy Un Día haciendo Surf", 
+          "marca": "Famosa", "rating": 4.8, 
+          "amazon": "https://www.amazon.es/dp/B08VWBK7N6", 
+          "imagenAmazon": "https://m.media-amazon.com/images/I/81x-R3S8s6L.jpg", 
+          "descripcion": "Incluye tabla de surf y look californiano." 
+        },
+         { "titulo": "Barbie Dreamtopia Malibú Sirena Luces Mágicas de Colores Muñeca Rubia, Juguete para el Agua",
+          "marca": "Mattel", 
+          "rating": 4., "amazon": "https://www.amazon.es/dp/B09BW2RTN8", 
+          "imagenAmazon": "https://m.media-amazon.com/images/I/61HG7WxbuKL._AC_SX679_.jpg",
+          "descripcion": "La mansión definitiva con luces y sonidos."
       ]
     }
   },
